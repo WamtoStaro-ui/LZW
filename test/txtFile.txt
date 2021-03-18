@@ -1,0 +1,3768 @@
+About This eBook
+
+
+ePUB is an open, industry-standard format for eBooks. However, support of ePUB and its many features varies across reading devices and applications. Use your device or app settings to customize the presentation to your liking. Settings that you can customize often include font, font size, single or double column, landscape or portrait mode, and figures that you can click or tap to enlarge. For additional information about the settings and features on your reading device or app, visit the device manufacturer's Web site.
+
+Many titles include programming code or configuration examples. To optimize the presentation of these elements, view the eBook in single-column, landscape mode and adjust the font size to the smallest setting. In addition to presenting code and configurations in the reflowable text format, we have included images of the code that mimic the presentation found in the print book; therefore, where the reflowable format may compromise the presentation of the code listing, you will see a "Click here to view code image" link. Click the link to view the print-fidelity code image. To return to the previous page viewed, click the Back button on your device or app.
+
+
+
+
+
+Advanced Programming in the UNIX? Environment
+
+
+Third Edition
+
+
+
+
+
+W. Richard Stevens
+
+Stephen A. Rago
+
+
+
+
+
+Upper Saddle River, NJ ? Boston ? Indianapolis ? San Francisco
+
+New York ? Toronto ? Montreal ? London ? Munich ? Paris ? Madrid
+
+Capetown ? Sydney ? Tokyo ? Singapore ? Mexico City
+
+
+
+
+
+Many of the designations used by manufacturers and sellers to distinguish their products are claimed as trademarks. Where those designations appear in this book, and the publisher was aware of a trademark claim, the designations have been printed with initial capital letters or in all capitals.
+
+The authors and publisher have taken care in the preparation of this book, but make no expressed or implied warranty of any kind and assume no responsibility for errors or omissions. No liability is assumed for incidental or consequential damages in connection with or arising out of the use of the information or programs contained herein.
+
+The publisher offers excellent discounts on this book when ordered in quantity for bulk purchases or special sales, which may include electronic versions and/or custom covers and content particular to your business, training goals, marketing focus, and branding interests. For more information, please contact:
+
+U.S. Corporate and Government Sales
+
+(800) 382-3419
+
+corpsales@pearsontechgroup.com
+
+For sales outside the United States, please contact:
+
+International Sales
+
+international@pearsoned.com
+
+Visit us on the Web: informit.com/aw
+
+Library of Congress Cataloging-in-Publication Data
+
+Stevens, W. Richard.
+
+Advanced programming in the UNIX environment/W. Richard Stevens, Stephen A. Rago. -
+
+Third edition.
+
+pages cm
+
+Includes bibliographical references and index.
+
+ISBN 978-0-321-63773-4 (pbk. : alk. paper)
+
+1. Operating systems (Computers) 2. UNIX (Computer file) I. Rago, Stephen A. II. Title.
+
+QA76.76.O63S754 2013
+
+005.4'32-dc23
+
+2013004509
+
+Copyright ? 2013 Pearson Education, Inc.
+
+All rights reserved. Printed in the United States of America. This publication is protected by copyright, and permission must be obtained from the publisher prior to any prohibited reproduction, storage in a retrieval system, or transmission in any form or by any means, electronic, mechanical, photocopying, recording, or likewise. To obtain permission to use material from this work, please submit a written request to Pearson Education, Inc., Permissions Department, One Lake Street, Upper Saddle River, New Jersey 07458, or you may fax your request to (201) 236-3290.
+
+ISBN-13: 978-0-321-63773-4
+
+ISBN-10: 0-321-63773-9
+
+Text printed in the United States on recycled paper at Edwards Brothers Malloy in Ann Arbor, Michigan.
+
+First printing, May 2013
+
+
+
+
+
+Praise for Advanced Programming in the UNIX? Environment, Second Edition
+
+
+"Stephen Rago's update is a long overdue benefit to the community of professionals using the versatile family of UNIX and UNIX-like operating environments. It removes obsolescence and includes newer developments. It also thoroughly updates the context of all topics, examples, and applications to recent releases of popular implementations of UNIX and UNIX-like environments. And yet, it does all this while retaining the style and taste of the original classic."
+
+-Mukesh Kacker, cofounder and former CTO of Pronto Networks, Inc.
+
+"One of the essential classics of UNIX programming."
+
+-Eric S. Raymond, author of The Art of UNIX Programming
+
+"This is the definitive reference book for any serious or professional UNIX systems programmer. Rago has updated and extended the classic Stevens text while keeping true to the original. The APIs are illuminated by clear examples of their use. He also mentions many of the pitfalls to look out for when programming across different UNIX system implementations and points out how to avoid these pitfalls using relevant standards such as POSIX 1003.1, 2004 edition, and the Single UNIX Specification, Version 3."
+
+-Andrew Josey, Director, Certification, The Open Group, and Chair of the POSIX 1003.1 Working Group
+
+"Advanced Programming in the UNIX? Environment, Second Edition, is an essential reference for anyone writing programs for a UNIX system. It's the first book I turn to when I want to understand or re-learn any of the various system interfaces. Stephen Rago has successfully revised this book to incorporate newer operating systems such as GNU/Linux and Apple's OS X while keeping true to the first edition in terms of both readability and usefulness. It will always have a place right next to my computer."
+
+-Dr. Benjamin Kuperman, Swarthmore College
+
+
+
+
+
+Praise for the First Edition
+
+
+"Advanced Programming in the UNIX? Environment is a must-have for any serious C programmer who works under UNIX. Its depth, thoroughness, and clarity of explanation are unmatched."
+
+-UniForum Monthly
+
+"Numerous readers recommended Advanced Programming in the UNIX? Environment by W. Richard Stevens (Addison-Wesley), and I'm glad they did; I hadn't even heard of this book, and it's been out since 1992. I just got my hands on a copy, and the first few chapters have been fascinating."
+
+-Open Systems Today
+
+"A much more readable and detailed treatment of [UNIX internals] can be found in Advanced Programming in the UNIX? Environment by W. Richard Stevens (Addison-Wesley). This book includes lots of realistic examples, and I find it quite helpful when I have systems programming tasks to do."
+
+-RS/Magazine
+
+
+
+
+
+For my parents, Len & Grace
+
+
+
+
+
+Contents
+
+
+Foreword to the Second Edition
+
+Preface
+
+Preface to the Second Edition
+
+Preface to the First Edition
+
+Chapter 1. UNIX System Overview
+
+1.1 Introduction
+
+1.2 UNIX Architecture
+
+1.3 Logging In
+
+1.4 Files and Directories
+
+1.5 Input and Output
+
+1.6 Programs and Processes
+
+1.7 Error Handling
+
+1.8 User Identification
+
+1.9 Signals
+
+1.10 Time Values
+
+1.11 System Calls and Library Functions
+
+1.12 Summary
+
+Chapter 2. UNIX Standardization and Implementations
+
+2.1 Introduction
+
+2.2 UNIX Standardization
+
+2.2.1 ISO C
+
+2.2.2 IEEE POSIX
+
+2.2.3 The Single UNIX Specification
+
+2.2.4 FIPS
+
+2.3 UNIX System Implementations
+
+2.3.1 UNIX System V Release 4
+
+2.3.2 4.4BSD
+
+2.3.3 FreeBSD
+
+2.3.4 Linux
+
+2.3.5 Mac OS X
+
+2.3.6 Solaris
+
+2.3.7 Other UNIX Systems
+
+2.4 Relationship of Standards and Implementations
+
+2.5 Limits
+
+2.5.1 ISO C Limits
+
+2.5.2 POSIX Limits
+
+2.5.3 XSI Limits
+
+2.5.4 sysconf, pathconf, and fpathconf Functions
+
+2.5.5 Indeterminate Runtime Limits
+
+2.6 Options
+
+2.7 Feature Test Macros
+
+2.8 Primitive System Data Types
+
+2.9 Differences Between Standards
+
+2.10 Summary
+
+Chapter 3. File I/O
+
+3.1 Introduction
+
+3.2 File Descriptors
+
+3.3 open and openat Functions
+
+3.4 creat Function
+
+3.5 close Function
+
+3.6 lseek Function
+
+3.7 read Function
+
+3.8 write Function
+
+3.9 I/O Efficiency
+
+3.10 File Sharing
+
+3.11 Atomic Operations
+
+3.12 dup and dup2 Functions
+
+3.13 sync, fsync, and fdatasync Functions
+
+3.14 fcntl Function
+
+3.15 ioctl Function
+
+3.16 /dev/fd
+
+3.17 Summary
+
+Chapter 4. Files and Directories
+
+4.1 Introduction
+
+4.2 stat, fstat, fstatat, and lstat Functions
+
+4.3 File Types
+
+4.4 Set-User-ID and Set-Group-ID
+
+4.5 File Access Permissions
+
+4.6 Ownership of New Files and Directories
+
+4.7 access and faccessat Functions
+
+4.8 umask Function
+
+4.9 chmod, fchmod, and fchmodat Functions
+
+4.10 Sticky Bit
+
+4.11 chown, fchown, fchownat, and lchown Functions
+
+4.12 File Size
+
+4.13 File Truncation
+
+4.14 File Systems
+
+4.15 link, linkat, unlink, unlinkat, and remove Functions
+
+4.16 rename and renameat Functions
+
+4.17 Symbolic Links
+
+4.18 Creating and Reading Symbolic Links
+
+4.19 File Times
+
+4.20 futimens, utimensat, and utimes Functions
+
+4.21 mkdir, mkdirat, and rmdir Functions
+
+4.22 Reading Directories
+
+4.23 chdir, fchdir, and getcwd Functions
+
+4.24 Device Special Files
+
+4.25 Summary of File Access Permission Bits
+
+4.26 Summary
+
+Chapter 5. Standard I/O Library
+
+5.1 Introduction
+
+5.2 Streams and FILE Objects
+
+5.3 Standard Input, Standard Output, and Standard Error
+
+5.4 Buffering
+
+5.5 Opening a Stream
+
+5.6 Reading and Writing a Stream
+
+5.7 Line-at-a-Time I/O
+
+5.8 Standard I/O Efficiency
+
+5.9 Binary I/O
+
+5.10 Positioning a Stream
+
+5.11 Formatted I/O
+
+5.12 Implementation Details
+
+5.13 Temporary Files
+
+5.14 Memory Streams
+
+5.15 Alternatives to Standard I/O
+
+5.16 Summary
+
+Chapter 6. System Data Files and Information
+
+6.1 Introduction
+
+6.2 Password File
+
+6.3 Shadow Passwords
+
+6.4 Group File
+
+6.5 Supplementary Group IDs
+
+6.6 Implementation Differences
+
+6.7 Other Data Files
+
+6.8 Login Accounting
+
+6.9 System Identification
+
+6.10 Time and Date Routines
+
+6.11 Summary
+
+Chapter 7. Process Environment
+
+7.1 Introduction
+
+7.2 main Function
+
+7.3 Process Termination
+
+7.4 Command-Line Arguments
+
+7.5 Environment List
+
+7.6 Memory Layout of a C Program
+
+7.7 Shared Libraries
+
+7.8 Memory Allocation
+
+7.9 Environment Variables
+
+7.10 setjmp and longjmp Functions
+
+7.11 getrlimit and setrlimit Functions
+
+7.12 Summary
+
+Chapter 8. Process Control
+
+8.1 Introduction
+
+8.2 Process Identifiers
+
+8.3 fork Function
+
+8.4 vfork Function
+
+8.5 exit Functions
+
+8.6 wait and waitpid Functions
+
+8.7 waitid Function
+
+8.8 wait3 and wait4 Functions
+
+8.9 Race Conditions
+
+8.10 exec Functions
+
+8.11 Changing User IDs and Group IDs
+
+8.12 Interpreter Files
+
+8.13 system Function
+
+8.14 Process Accounting
+
+8.15 User Identification
+
+8.16 Process Scheduling
+
+8.17 Process Times
+
+8.18 Summary
+
+Chapter 9. Process Relationships
+
+9.1 Introduction
+
+9.2 Terminal Logins
+
+9.3 Network Logins
+
+9.4 Process Groups
+
+9.5 Sessions
+
+9.6 Controlling Terminal
+
+9.7 tcgetpgrp, tcsetpgrp, and tcgetsid Functions
+
+9.8 Job Control
+
+9.9 Shell Execution of Programs
+
+9.10 Orphaned Process Groups
+
+9.11 FreeBSD Implementation
+
+9.12 Summary
+
+Chapter 10. Signals
+
+10.1 Introduction
+
+10.2 Signal Concepts
+
+10.3 signal Function
+
+10.4 Unreliable Signals
+
+10.5 Interrupted System Calls
+
+10.6 Reentrant Functions
+
+10.7 SIGCLD Semantics
+
+10.8 Reliable-Signal Terminology and Semantics
+
+10.9 kill and raise Functions
+
+10.10 alarm and pause Functions
+
+10.11 Signal Sets
+
+10.12 sigprocmask Function
+
+10.13 sigpending Function
+
+10.14 sigaction Function
+
+10.15 sigsetjmp and siglongjmp Functions
+
+10.16 sigsuspend Function
+
+10.17 abort Function
+
+10.18 system Function
+
+10.19 sleep, nanosleep, and clock_nanosleep Functions
+
+10.20 sigqueue Function
+
+10.21 Job-Control Signals
+
+10.22 Signal Names and Numbers
+
+10.23 Summary
+
+Chapter 11. Threads
+
+11.1 Introduction
+
+11.2 Thread Concepts
+
+11.3 Thread Identification
+
+11.4 Thread Creation
+
+11.5 Thread Termination
+
+11.6 Thread Synchronization
+
+11.6.1 Mutexes
+
+11.6.2 Deadlock Avoidance
+
+11.6.3 pthread_mutex_timedlock Function
+
+11.6.4 Reader-Writer Locks
+
+11.6.5 Reader-Writer Locking with Timeouts
+
+11.6.6 Condition Variables
+
+11.6.7 Spin Locks
+
+11.6.8 Barriers
+
+11.7 Summary
+
+Chapter 12. Thread Control
+
+12.1 Introduction
+
+12.2 Thread Limits
+
+12.3 Thread Attributes
+
+12.4 Synchronization Attributes
+
+12.4.1 Mutex Attributes
+
+12.4.2 Reader-Writer Lock Attributes
+
+12.4.3 Condition Variable Attributes
+
+12.4.4 Barrier Attributes
+
+12.5 Reentrancy
+
+12.6 Thread-Specific Data
+
+12.7 Cancel Options
+
+12.8 Threads and Signals
+
+12.9 Threads and fork
+
+12.10 Threads and I/O
+
+12.11 Summary
+
+Chapter 13. Daemon Processes
+
+13.1 Introduction
+
+13.2 Daemon Characteristics
+
+13.3 Coding Rules
+
+13.4 Error Logging
+
+13.5 Single-Instance Daemons
+
+13.6 Daemon Conventions
+
+13.7 Client-Server Model
+
+13.8 Summary
+
+Chapter 14. Advanced I/O
+
+14.1 Introduction
+
+14.2 Nonblocking I/O
+
+14.3 Record Locking
+
+14.4 I/O Multiplexing
+
+14.4.1 select and pselect Functions
+
+14.4.2 poll Function
+
+14.5 Asynchronous I/O
+
+14.5.1 System V Asynchronous I/O
+
+14.5.2 BSD Asynchronous I/O
+
+14.5.3 POSIX Asynchronous I/O
+
+14.6 readv and writev Functions
+
+14.7 readn and writen Functions
+
+14.8 Memory-Mapped I/O
+
+14.9 Summary
+
+Chapter 15. Interprocess Communication
+
+15.1 Introduction
+
+15.2 Pipes
+
+15.3 popen and pclose Functions
+
+15.4 Coprocesses
+
+15.5 FIFOs
+
+15.6 XSI IPC
+
+15.6.1 Identifiers and Keys
+
+15.6.2 Permission Structure
+
+15.6.3 Configuration Limits
+
+15.6.4 Advantages and Disadvantages
+
+15.7 Message Queues
+
+15.8 Semaphores
+
+15.9 Shared Memory
+
+15.10 POSIX Semaphores
+
+15.11 Client-Server Properties
+
+15.12 Summary
+
+Chapter 16. Network IPC: Sockets
+
+16.1 Introduction
+
+16.2 Socket Descriptors
+
+16.3 Addressing
+
+16.3.1 Byte Ordering
+
+16.3.2 Address Formats
+
+16.3.3 Address Lookup
+
+16.3.4 Associating Addresses with Sockets
+
+16.4 Connection Establishment
+
+16.5 Data Transfer
+
+16.6 Socket Options
+
+16.7 Out-of-Band Data
+
+16.8 Nonblocking and Asynchronous I/O
+
+16.9 Summary
+
+Chapter 17. Advanced IPC
+
+17.1 Introduction
+
+17.2 UNIX Domain Sockets
+
+17.2.1 Naming UNIX Domain Sockets
+
+17.3 Unique Connections
+
+17.4 Passing File Descriptors
+
+17.5 An Open Server, Version 1
+
+17.6 An Open Server, Version 2
+
+17.7 Summary
+
+Chapter 18. Terminal I/O
+
+18.1 Introduction
+
+18.2 Overview
+
+18.3 Special Input Characters
+
+18.4 Getting and Setting Terminal Attributes
+
+18.5 Terminal Option Flags
+
+18.6 stty Command
+
+18.7 Baud Rate Functions
+
+18.8 Line Control Functions
+
+18.9 Terminal Identification
+
+18.10 Canonical Mode
+
+18.11 Noncanonical Mode
+
+18.12 Terminal Window Size
+
+18.13 termcap, terminfo, and curses
+
+18.14 Summary
+
+Chapter 19. Pseudo Terminals
+
+19.1 Introduction
+
+19.2 Overview
+
+19.3 Opening Pseudo-Terminal Devices
+
+19.4 pty_fork Function
+
+19.5 pty Program
+
+19.6 Using the pty Program
+
+19.7 Advanced Features
+
+19.8 Summary
+
+Chapter 20. A Database Library
+
+20.1 Introduction
+
+20.2 History
+
+20.3 The Library
+
+20.4 Implementation Overview
+
+20.5 Centralized or Decentralized?
+
+20.6 Concurrency
+
+20.7 Building the Library
+
+20.8 Source Code
+
+20.9 Performance
+
+20.10 Summary
+
+Chapter 21. Communicating with a Network Printer
+
+21.1 Introduction
+
+21.2 The Internet Printing Protocol
+
+21.3 The Hypertext Transfer Protocol
+
+21.4 Printer Spooling
+
+21.5 Source Code
+
+21.6 Summary
+
+Appendix A. Function Prototypes
+
+Appendix B. Miscellaneous Source Code
+
+B.1 Our Header File
+
+B.2 Standard Error Routines
+
+Appendix C. Solutions to Selected Exercises
+
+Bibliography
+
+Index
+
+
+
+
+
+Foreword to the Second Edition
+
+
+At some point during nearly every interview I give, as well as in question periods after talks, I get asked some variant of the same question: "Did you expect Unix to last for so long?" And of course the answer is always the same: No, we didn't quite anticipate what has happened. Even the observation that the system, in some form, has been around for well more than half the lifetime of the commercial computing industry is now dated.
+
+The course of developments has been turbulent and complicated. Computer technology has changed greatly since the early 1970s, most notably in universal networking, ubiquitous graphics, and readily available personal computing, but the system has somehow managed to accommodate all of these phenomena. The commercial environment, although today dominated on the desktop by Microsoft and Intel, has in some ways moved from single-supplier to multiple sources and, in recent years, to increasing reliance on public standards and on freely available source.
+
+Fortunately, Unix, considered as a phenomenon and not just a brand, has been able to move with and even lead this wave. AT&T in the 1970s and 1980s was protective of the actual Unix source code, but encouraged standardization efforts based on the system's interfaces and languages. For example, the SVID-the System V Interface Definition-was published by AT&T, and it became the basis for the POSIX work and its follow-ons. As it happened, Unix was able to adapt rather gracefully to a networked environment and, perhaps less elegantly, but still adequately, to a graphical one. And as it also happened, the basic Unix kernel interface and many of its characteristic user-level tools were incorporated into the technological foundations of the open-source movement.
+
+It is important that papers and writings about the Unix system were always encouraged, even while the software of the system itself was proprietary, for example Maurice Bach's book, The Design of the Unix Operating System. In fact, I would claim that a central reason for the system's longevity has been that it has attracted remarkably talented writers to explain its beauties and mysteries. Brian Kernighan is one of these; Rich Stevens is certainly another. The first edition of this book, along with his series of books about networking, are rightfully regarded as remarkably well-crafted works of exposition, and became hugely popular.
+
+However, the first edition of this book was published before Linux and the several open-source renditions of the Unix interface that stemmed from the Berkeley CSRG became widespread, and also at a time when many people's networking consisted of a serial modem. Steve Rago has carefully updated this book to account for the technology changes, as well as developments in various ISO and IEEE standards since its first publication. Thus his examples are fresh, and freshly tested.
+
+It's a most worthy second edition of a classic.
+
+Murray Hill, New Jersey
+
+March 2005
+
+Dennis Ritchie
+
+
+
+
+
+Preface
+
+
+Introduction
+
+
+It's been almost eight years since I first updated Advanced Programming in the UNIX Environment, and already so much has changed.
+
+
+
+? Before the second edition was published, The Open Group created a 2004 edition of the Single UNIX Specification, folding in the changes from two sets of corrigenda. In 2008, The Open Group created a new version of the Single UNIX Specification, updating the base definitions, adding new interfaces, and removing obsolete ones. This was called the 2008 version of POSIX.1, which included version 7 of the Base Specification and was published in 2009. In 2010, this was bundled with an updated curses interface and reissued as version 4 of the Single UNIX Specification.
+
+? Versions 10.5, 10.6, and 10.8 of the Mac OS X operating system, running on Intel processors, have been certified to be UNIX? systems by The Open Group.
+
+? Apple Computer discontinued development of Mac OS X for the PowerPC platform. From Release 10.6 (Snow Leopard) onward, new operating system versions are released for the x86 platform only.
+
+? The Solaris operating system was released in open source form to try to compete with the popularity of the open source model followed by FreeBSD, Linux, and Mac OS X. After Oracle Corporation bought Sun Microsystems in 2010, it discontinued the development of OpenSolaris. Instead, the Solaris community formed the Illumos project to continue open source development based on OpenSolaris. For more information, see http://www.illumos.org.
+
+? In 2011, the C standard was updated, but because systems haven't caught up yet with the changes, we still refer to the 1999 version in this text.
+
+Most notably, the platforms used in the second edition have become out-of-date. In this book, the third edition, I cover the following platforms:
+
+1. FreeBSD 8.0, a descendant of the 4.4BSD release from the Computer Systems Research Group at the University of California at Berkeley, running on a 32-bit Intel Pentium processor.
+
+2. Linux 3.2.0 (the Ubuntu 12.04 distribution), a free UNIX-like operating system, running on a 64-bit Intel Core i5 processor.
+
+3. Apple Mac OS X, version 10.6.8 (Darwin 10.8.0) on a 64-bit Intel Core 2 Duo processor. (Darwin is based on FreeBSD and Mach.) I chose to switch to an Intel platform instead of continuing with one based on the PowerPC, because the latest versions of Mac OS X are no longer being ported to the PowerPC platform. The drawback to this choice is that the processors covered are now slanted in favor of Intel. When discussing issues of heterogeneity, it is helpful to have processors with different characteristics, such as byte ordering and integer size.
+
+4. Solaris 10, a derivative of System V Release 4 from Sun Microsystems (now Oracle), running on a 64-bit UltraSPARC IIi processor.
+
+
+
+
+
+Changes from the Second Edition
+
+
+One of the biggest changes to the Single UNIX Specification in POSIX.1-2008 is the demotion of the STREAMS-related interfaces to obsolescent status. This is the first step before these interfaces are removed entirely in a future version of the standard. Because of this, I have reluctantly removed the STREAMS content from this edition of the book. This is an unfortunate change, because the STREAMS interfaces provided a nice contrast to the socket interfaces, and in many ways were more flexible. Admittedly, I am not entirely unbiased when it comes to the STREAMS mechanism, but there is no debating the reduced role it is playing in current systems:
+
+
+
+? Linux doesn't include STREAMS in its base system, although packages (LiS and OpenSS7) are available to add this functionality.
+
+? Although Solaris 10 includes STREAMS, Solaris 11 uses a socket implementation that is not built on top of STREAMS.
+
+? Mac OS X doesn't include support for STREAMS.
+
+? FreeBSD doesn't include support for STREAMS (and never did).
+
+So with the removal of the STREAMS-related material, an opportunity exists to replace it with new topics, such as POSIX asynchronous I/O.
+
+In the second edition, the Linux version covered was based on the 2.4 version of the source. In this edition, I have updated the version of Linux to 3.2. One of the largest area of differences between these two versions is the threads subsystem. Between Linux 2.4 and Linux 2.6, the threads implementation was changed to the Native POSIX Thread Library (NPTL). NPTL makes threads on Linux behave more like threads on the other systems.
+
+In total, this edition includes more than 70 new interfaces, including interfaces to handle asynchronous I/O, spin locks, barriers, and POSIX semaphores. Most obsolete interfaces are removed, except for a few ubiquitous ones.
+
+
+
+
+
+Acknowledgments
+
+
+Many readers have e-mailed comments and bug reports on the second edition. My thanks to them for improving the accuracy of the information presented. The following people were the first to make a particular suggestion or point out a specific error: Seth Arnold, Luke Bakken, Rick Ballard, Johannes Bittner, David Bronder, Vlad Buslov, Peter Butler, Yuching Chen, Mike Cheng, Jim Collins, Bob Cousins, Will Dennis, Thomas Dickey, Lo?c Domaigne, Igor Fuksman, Alex Gezerlis, M. Scott Gordon, Timothy Goya, Tony Graham, Michael Hobgood, Michael Kerrisk, Youngho Kwon, Richard Li, Xueke Liu, Yun Long, Dan McGregor, Dylan McNamee, Greg Miller, Simon Morgan, Harry Newton, Jim Oldfield, Scott Parish, Zvezdan Petkovic, David Reiss, Konstantinos Sakoutis, David Smoot, David Somers, Andriy Tkachuk, Nathan Weeks, Florian Weimer, Qingyang Xu, and Michael Zalokar.
+
+
+
+The technical reviewers improved the accuracy of the information presented. Thanks to Steve Albert, Bogdan Barbu, and Robert Day. Special thanks to Geoff Clare and Andrew Josey for providing insights into the Single UNIX Specification and helping to improve the accuracy of Chapter 2. Also, thanks to Ken Thompson for answering history questions.
+
+Once again, the staff at Addison-Wesley was great to work with. Thanks to Kim Boedigheimer, Romny French, John Fuller, Jessica Goldstein, Julie Nahil, and Debra Williams-Cauley. In addition, thanks to Jill Hobbs for providing her copyediting expertise this time around.
+
+Finally, thanks to my family for their understanding while I spent so much time working on this updated edition.
+
+As before, the source code presented here is available at www.apuebook.com. I welcome e-mail from any readers with comments, suggestions, or bug fixes.
+
+Warren, New Jersey
+
+January 2013
+
+Stephen A. Rago
+
+sar@apuebook.com
+
+
+
+
+
+Preface to the Second Edition
+
+
+Introduction
+
+
+Rich Stevens and I first met through an e-mail exchange when I reported a typographical error in his first book, UNIX Network Programming. He used to kid me about being the person to send him his first errata notice for the book. Until his death in 1999, we exchanged e-mail irregularly, usually when one of us had a question we thought the other might be able to answer. We met for dinner at USENIX conferences and when Rich was teaching in the area.
+
+
+
+Rich Stevens was a friend who always conducted himself as a gentleman. When I wrote UNIX System V Network Programming in 1993, I intended it to be a System V version of Rich's UNIX Network Programming. As was his nature, Rich gladly reviewed chapters for me, and treated me not as a competitor, but as a colleague. We often talked about collaborating on a STREAMS version of his TCP/IP Illustrated book. Had events been different, we might have actually done it, but since Rich is no longer with us, revising Advanced Programming in the UNIX Environment is the closest I'll ever get to writing a book with him.
+
+When the editors at Addison-Wesley told me that they wanted to update Rich's book, I thought that there wouldn't be too much to change. Even after 13 years, Rich's work still holds up well. But the UNIX industry is vastly different today from what it was when the book was first published.
+
+? The System V variants are slowly being replaced by Linux. The major system vendors that ship their hardware with their own versions of the UNIX System have either made Linux ports available or announced support for Linux. Solaris is perhaps the last descendant of UNIX System V Release 4 with any appreciable market share.
+
+? After 4.4BSD was released, the Computing Science Research Group (CSRG) from the University of California at Berkeley decided to put an end to its development of the UNIX operating system, but several different groups of volunteers still maintain publicly available versions.
+
+? The introduction of Linux, supported by thousands of volunteers, has made it possible for anyone with a computer to run an operating system similar to the UNIX System, with freely available source code for the newest hardware devices. The success of Linux is something of a curiosity, given that several free BSD alternatives are readily available.
+
+? Continuing its trend as an innovative company, Apple Computer abandoned its old Mac operating system and replaced it with one based on Mach and FreeBSD.
+
+Thus, I've tried to update the information presented in this book to reflect these four platforms.
+
+After Rich wrote Advanced Programming in the UNIX Environment in 1992, I got rid of most of my UNIX programmer's manuals. To this day, the two books I keep closest to my desk are a dictionary and a copy of Advanced Programming in the UNIX Environment. I hope you find this revision equally useful.
+
+
+
+
+
+Changes from the First Edition
+
+
+Rich's work holds up well. I've tried not to change his original vision for this book, but a lot has happened in 13 years. This is especially true with the standards that affect the UNIX programming interface.
+
+
+
+Throughout the book, I've updated interfaces that have changed from the ongoing efforts in standards organizations. This is most noticeable in Chapter 2, since its primary topic is standards. The 2001 version of the POSIX.1 standard, which we use in this revision, is much more comprehensive than the 1990 version on which the first edition of this book was based. The 1990 ISO C standard was updated in 1999, and some changes affect the interfaces in the POSIX.1 standard.
+
+A lot more interfaces are now covered by the POSIX.1 specification. The base specifications of the Single UNIX Specification (published by The Open Group, formerly X/Open) have been merged with POSIX.1. POSIX.1 now includes several 1003.1 standards and draft standards that were formerly published separately.
+
+Accordingly, I've added chapters to cover some new topics. Threads and multithreaded programming are important concepts because they present a cleaner way for programmers to deal with concurrency and asynchrony.
+
+The socket interface is now part of POSIX.1. It provides a single interface to interprocess communication (IPC), regardless of the location of the process, and is a natural extension of the IPC chapters.
+
+I've omitted most of the real-time interfaces that appear in POSIX.1. These are best treated in a text devoted to real-time programming. One such book appears in the bibliography.
+
+I've updated the case studies in the last chapters to cover more relevant real-world examples. For example, few systems these days are connected to a PostScript printer via a serial or parallel port. Most PostScript printers today are accessed via a network, so I've changed the case study that deals with PostScript printer communication to take this into account.
+
+The chapter on modem communication is less relevant these days. So that the original material is not lost, however, it is available on the book's Web site in two formats: PostScript (http://www.apuebook.com/lostchapter/modem.ps) and PDF (http://www.apuebook.com/lostchapter/modem.pdf).
+
+The source code for the examples shown in this book is also available at www.apuebook.com. Most of the examples have been run on four platforms:
+
+1. FreeBSD 5.2.1, a derivative of the 4.4BSD release from the Computer Systems Research Group at the University of California at Berkeley, running on an Intel Pentium processor
+
+2. Linux 2.4.22 (the Mandrake 9.2 distribution), a free UNIX-like operating system, running on Intel Pentium processors
+
+3. Solaris 9, a derivative of System V Release 4 from Sun Microsystems, running on a 64-bit UltraSPARC IIi processor
+
+4. Darwin 7.4.0, an operating environment based on FreeBSD and Mach, supported by Apple Mac OS X, version 10.3, on a PowerPC processor
+
+
+
+
+
+Acknowledgments
+
+
+Rich Stevens wrote the first edition of this book on his own, and it became an instant classic.
+
+
+
+I couldn't have updated this book without the support of my family. They put up with piles of papers scattered about the house (well, more so than usual), my monopolizing most of the computers in the house, and lots of hours with my face buried behind a computer terminal. My wife, Jeanne, even helped out by installing Linux for me on one of the test machines.
+
+The technical reviewers suggested many improvements and helped make sure that the content was accurate. Many thanks to David Bausum, David Boreham, Keith Bostic, Mark Ellis, Phil Howard, Andrew Josey, Mukesh Kacker, Brian Kernighan, Bengt Kleberg, Ben Kuperman, Eric Raymond, and Andy Rudoff.
+
+I'd also like to thank Andy Rudoff for answering questions about Solaris and Dennis Ritchie for digging up old papers and answering history questions. Once again, the staff at Addison-Wesley was great to work with. Thanks to Tyrrell Albaugh, Mary Franz, John Fuller, Karen Gettman, Jessica Goldstein, Noreen Regina, and John Wait. My thanks to Evelyn Pyle for the fine job of copyediting.
+
+As Rich did, I also welcome electronic mail from any readers with comments, suggestions, or bug fixes.
+
+Warren, New Jersey
+
+April 2005
+
+Stephen A. Rago
+
+sar@apuebook.com
+
+
+
+
+
+Preface to the First Edition
+
+
+Introduction
+
+
+This book describes the programming interface to the Unix system-the system call interface and many of the functions provided in the standard C library. It is intended for anyone writing programs that run under Unix.
+
+
+
+Like most operating systems, Unix provides numerous services to the programs that are running-open a file, read a file, start a new program, allocate a region of memory, get the current time-of-day, and so on. This has been termed the system call interface. Additionally, the standard C library provides numerous functions that are used by almost every C program (format a variable's value for output, compare two strings, etc.).
+
+The system call interface and the library routines have traditionally been described in Sections 2 and 3 of the Unix Programmer's Manual. This book is not a duplication of these sections. Examples and rationale are missing from the Unix Programmer's Manual, and that's what this book provides.
+
+
+
+
+
+Unix Standards
+
+
+The proliferation of different versions of Unix during the 1980s has been tempered by the various international standards that were started during the late 1980s. These include the ANSI standard for the C programming language, the IEEE POSIX family (still being developed), and the X/Open portability guide.
+
+
+
+This book also describes these standards. But instead of just describing the standards by themselves, we describe them in relation to popular implementations of the standards-System V Release 4 and the forthcoming 4.4BSD. This provides a real-world description, which is often lacking from the standard itself and from books that describe only the standard.
+
+
+
+
+
+Organization of the Book
+
+
+This book is divided into six parts:
+
+
+
+1. An overview and introduction to basic Unix programming concepts and terminology (Chapter 1), with a discussion of the various Unix standardization efforts and different Unix implementations (Chapter 2).
+
+2. I/O-unbuffered I/O (Chapter 3), properties of files and directories (Chapter 4), the standard I/O library (Chapter 5), and the standard system data files (Chapter 6).
+
+3. Processes-the environment of a Unix process (Chapter 7), process control (Chapter 8), the relationships between different processes (Chapter 9), and signals (Chapter 10).
+
+4. More I/O-terminal I/O (Chapter 11), advanced I/O (Chapter 12), and daemon processes (Chapter 13).
+
+5. IPC-Interprocess communication (Chapters 14 and 15).
+
+6. Examples-a database library (Chapter 16), communicating with a PostScript printer (Chapter 17), a modem dialing program (Chapter 18), and using pseudo terminals (Chapter 19).
+
+A reading familiarity with C would be beneficial as would some experience using Unix. No prior programming experience with Unix is assumed. This text is intended for programmers familiar with Unix and programmers familiar with some other operating system who wish to learn the details of the services provided by most Unix systems.
+
+
+
+
+
+Examples in the Text
+
+
+This book contains many examples-approximately 10,000 lines of source code. All the examples are in the C programming language. Furthermore, these examples are in ANSI C. You should have a copy of the Unix Programmer's Manual for your system handy while reading this book, since reference is made to it for some of the more esoteric and implementation-dependent features.
+
+
+
+Almost every function and system call is demonstrated with a small, complete program. This lets us see the arguments and return values and is often easier to comprehend than the use of the function in a much larger program. But since some of the small programs are contrived examples, a few bigger examples are also included (Chapters 16, 17, 18, and 19). These larger examples demonstrate the programming techniques in larger, real-world examples.
+
+All the examples have been included in the text directly from their source files. A machine-readable copy of all the examples is available via anonymous FTP from the Internet host ftp.uu.net in the file published/books/stevens.advprog.tar.Z. Obtaining the source code allows you to modify the programs from this text and experiment with them on your system.
+
+
+
+
+
+Systems Used to Test the Examples
+
+
+Unfortunately all operating systems are moving targets. Unix is no exception. The following diagram shows the recent evolution of the various versions of System V and 4.xBSD.
+
+
+
+
+
+4.xBSD are the various systems from the Computer Systems Research Group at the University of California at Berkeley. This group also distributes the BSD Net 1 and BSD Net 2 releases-publicly available source code from the 4.xBSD systems. SVRx refers to System V Release x from AT&T. XPG3 is the X/Open Portability Guide, Issue 3, and ANSI C is the ANSI standard for the C programming language. POSIX.1 is the IEEE and ISO standard for the interface to a Unix-like system. We'll have more to say about these different standards and the various versions of Unix in Sections 2.2 and 2.3.
+
+In this text we use the term 4.3+BSD to refer to the Unix system from Berkeley that is somewhere between the BSD Net 2 release and 4.4BSD.
+
+At the time of this writing, 4.4BSD was not released, so the system could not be called 4.4BSD. Nevertheless a simple name was needed to refer to this system and 4.3+BSD is used throughout the text.
+
+Most of the examples in this text have been run on four different versions of Unix:
+
+1. Unix System V/386 Release 4.0 Version 2.0 ("vanilla SVR4") from U.H. Corp. (UHC), on an Intel 80386 processor.
+
+2. 4.3+BSD at the Computer Systems Research Group, Computer Science Division, University of California at Berkeley, on a Hewlett Packard workstation.
+
+3. BSD/386 (a derivative of the BSD Net 2 release) from Berkeley Software Design, Inc., on an Intel 80386 processor. This system is almost identical to what we call 4.3+BSD.
+
+4. SunOS 4.1.1 and 4.1.2 (systems with a strong Berkeley heritage but many System V features) from Sun Microsystems, on a SPARCstation SLC.
+
+Numerous timing tests are provided in the text and the systems used for the test are identified.
+
+
+
+
+
+Acknowledgments
+
+
+Once again I am indebted to my family for their love, support, and many lost weekends over the past year and a half. Writing a book is, in many ways, a family affair. Thank you Sally, Bill, Ellen, and David.
+
+
+
+I am especially grateful to Brian Kernighan for his help in the book. His numerous thorough reviews of the entire manuscript and his gentle prodding for better prose hopefully show in the final result. Steve Rago was also a great resource, both in reviewing the entire manuscript and answering many questions about the details and history of System V. My thanks to the other technical reviewers used by Addison-Wesley, who provided valuable comments on various portions of the manuscript: Maury Bach, Mark Ellis, Jeff Gitlin, Peter Honeyman, John Linderman, Doug McIlroy, Evi Nemeth, Craig Partridge, Dave Presotto, Gary Wilson, and Gary Wright.
+
+Keith Bostic and Kirk McKusick at the U.C. Berkeley CSRG provided an account that was used to test the examples on the latest BSD system. (Many thanks to Peter Salus too.) Sam Nataros and Joachim Sacksen at UHC provided the copy of SVR4 used to test the examples. Trent Hein helped obtain the alpha and beta copies of BSD/386.
+
+Other friends have helped in many small, but significant ways over the past few years: Paul Lucchina, Joe Godsil, Jim Hogue, Ed Tankus, and Gary Wright. My editor at Addison-Wesley, John Wait, has been a great friend through it all. He never complained when the due date slipped and the page count kept increasing. A special thanks to the National Optical Astronomy Observatories (NOAO), especially Sidney Wolff, Richard Wolff, and Steve Grandi, for providing computer time.
+
+Real Unix books are written using troff and this book follows that time-honored tradition. Camera-ready copy of the book was produced by the author using the groff package written by James Clark. Many thanks to James Clark for providing this excellent system and for his rapid response to bug fixes. Perhaps someday I will really understand troff footer traps.
+
+I welcome electronic mail from any readers with comments, suggestions, or bug fixes.
+
+Tucson, Arizona
+
+April 1992
+
+W. Richard Stevens
+
+rstevens@kohala.com
+
+http://www.kohala.com/~rstevens
+
+
+
+
+
+1. UNIX System Overview
+
+
+1.1. Introduction
+
+
+All operating systems provide services for programs they run. Typical services include executing a new program, opening a file, reading a file, allocating a region of memory, getting the current time of day, and so on. The focus of this text is to describe the services provided by various versions of the UNIX operating system.
+
+
+
+Describing the UNIX System in a strictly linear fashion, without any forward references to terms that haven't been described yet, is nearly impossible (and would probably be boring). This chapter provides a whirlwind tour of the UNIX System from a programmer's perspective. We'll give some brief descriptions and examples of terms and concepts that appear throughout the text. We describe these features in much more detail in later chapters. This chapter also provides an introduction to and overview of the services provided by the UNIX System for programmers new to this environment.
+
+
+
+
+
+1.2. UNIX Architecture
+
+
+In a strict sense, an operating system can be defined as the software that controls the hardware resources of the computer and provides an environment under which programs can run. Generally, we call this software the kernel, since it is relatively small and resides at the core of the environment. Figure 1.1 shows a diagram of the UNIX System architecture.
+
+
+
+Figure 1.1 Architecture of the UNIX operating system
+
+
+
+The interface to the kernel is a layer of software called the system calls (the shaded portion in Figure 1.1). Libraries of common functions are built on top of the system call interface, but applications are free to use both. (We talk more about system calls and library functions in Section 1.11.) The shell is a special application that provides an interface for running other applications.
+
+In a broad sense, an operating system consists of the kernel and all the other software that makes a computer useful and gives the computer its personality. This other software includes system utilities, applications, shells, libraries of common functions, and so on.
+
+For example, Linux is the kernel used by the GNU operating system. Some people refer to this combination as the GNU/Linux operating system, but it is more commonly referred to as simply Linux. Although this usage may not be correct in a strict sense, it is understandable, given the dual meaning of the phrase operating system. (It also has the advantage of being more succinct.)
+
+
+
+
+
+1.3. Logging In
+
+
+Login Name
+
+
+When we log in to a UNIX system, we enter our login name, followed by our password. The system then looks up our login name in its password file, usually the file /etc/passwd. If we look at our entry in the password file, we see that it's composed of seven colon-separated fields: the login name, encrypted password, numeric user ID (205), numeric group ID (105), a comment field, home directory (/home/sar), and shell program (/bin/ksh).
+
+
+
+
+
+sar:x:205:105:Stephen Rago:/home/sar:/bin/ksh
+
+All contemporary systems have moved the encrypted password to a different file. In Chapter 6, we'll look at these files and some functions to access them.
+
+
+
+
+
+Shells
+
+
+Once we log in, some system information messages are typically displayed, and then we can type commands to the shell program. (Some systems start a window management program when you log in, but you generally end up with a shell running in one of the windows.) A shell is a command-line interpreter that reads user input and executes commands. The user input to a shell is normally from the terminal (an interactive shell) or sometimes from a file (called a shell script). The common shells in use are summarized in Figure 1.2.
+
+
+
+Figure 1.2 Common shells used on UNIX systems
+
+
+
+The system knows which shell to execute for us based on the final field in our entry in the password file.
+
+The Bourne shell, developed by Steve Bourne at Bell Labs, has been in use since Version 7 and is provided with almost every UNIX system in existence. The control-flow constructs of the Bourne shell are reminiscent of Algol 68.
+
+The C shell, developed by Bill Joy at Berkeley, is provided with all the BSD releases. Additionally, the C shell was provided by AT&T with System V/386 Release 3.2 and was also included in System V Release 4 (SVR4). (We'll have more to say about these different versions of the UNIX System in the next chapter.) The C shell was built on the 6th Edition shell, not the Bourne shell. Its control flow looks more like the C language, and it supports additional features that weren't provided by the Bourne shell: job control, a history mechanism, and command-line editing.
+
+The Korn shell is considered a successor to the Bourne shell and was first provided with SVR4. The Korn shell, developed by David Korn at Bell Labs, runs on most UNIX systems, but before SVR4 was usually an extra-cost add-on, so it is not as widespread as the other two shells. It is upward compatible with the Bourne shell and includes those features that made the C shell popular: job control, command-line editing, and so on.
+
+The Bourne-again shell is the GNU shell provided with all Linux systems. It was designed to be POSIX conformant, while still remaining compatible with the Bourne shell. It supports features from both the C shell and the Korn shell.
+
+The TENEX C shell is an enhanced version of the C shell. It borrows several features, such as command completion, from the TENEX operating system (developed in 1972 at Bolt Beranek and Newman). The TENEX C shell adds many features to the C shell and is often used as a replacement for the C shell.
+
+The shell was standardized in the POSIX 1003.2 standard. The specification was based on features from the Korn shell and Bourne shell.
+
+The default shell used by different Linux distributions varies. Some distributions use the Bourne-again shell. Others use the BSD replacement for the Bourne shell, called dash (Debian Almquist shell, originally written by Kenneth Almquist and later ported to Linux). The default user shell in FreeBSD is derived from the Almquist shell. The default shell in Mac OS X is the Bourne-again shell. Solaris, having its heritage in both BSD and System V, provides all the shells shown in Figure 1.2. Free ports of the shells are available on the Internet.
+
+Throughout the text, we will use parenthetical notes such as this to describe historical notes and to compare different implementations of the UNIX System. Often the reason for a particular implementation technique becomes clear when the historical reasons are described.
+
+Throughout this text, we'll show interactive shell examples to execute a program that we've developed. These examples use features common to the Bourne shell, the Korn shell, and the Bourne-again shell.
+
+
+
+
+
+1.4. Files and Directories
+
+
+File System
+
+
+The UNIX file system is a hierarchical arrangement of directories and files. Everything starts in the directory called root, whose name is the single character /.
+
+
+
+
+
+A directory is a file that contains directory entries. Logically, we can think of each directory entry as containing a filename along with a structure of information describing the attributes of the file. The attributes of a file are such things as the type of file (regular file, directory), the size of the file, the owner of the file, permissions for the file (whether other users may access this file), and when the file was last modified. The stat and fstat functions return a structure of information containing all the attributes of a file. In Chapter 4, we'll examine all the attributes of a file in great detail.
+
+We make a distinction between the logical view of a directory entry and the way it is actually stored on disk. Most implementations of UNIX file systems don't store attributes in the directory entries themselves, because of the difficulty of keeping them in synch when a file has multiple hard links. This will become clear when we discuss hard links in Chapter 4.
+
+
+
+
+
+Filename
+
+
+The names in a directory are called filenames. The only two characters that cannot appear in a filename are the slash character (/) and the null character. The slash separates the filenames that form a pathname (described next) and the null character terminates a pathname. Nevertheless, it's good practice to restrict the characters in a filename to a subset of the normal printing characters. (If we use some of the shell's special characters in the filename, we have to use the shell's quoting mechanism to reference the filename, and this can get complicated.) Indeed, for portability, POSIX.1 recommends restricting filenames to consist of the following characters: letters (a-z, A-Z), numbers (0-9), period (.), dash (-), and underscore (_).
+
+
+
+Two filenames are automatically created whenever a new directory is created: . (called dot) and .. (called dot-dot). Dot refers to the current directory, and dot-dot refers to the parent directory. In the root directory, dot-dot is the same as dot.
+
+The Research UNIX System and some older UNIX System V file systems restricted a filename to 14 characters. BSD versions extended this limit to 255 characters. Today, almost all commercial UNIX file systems support at least 255-character filenames.
+
+
+
+
+
+Pathname
+
+
+A sequence of one or more filenames, separated by slashes and optionally starting with a slash, forms a pathname. A pathname that begins with a slash is called an absolute pathname; otherwise, it's called a relative pathname. Relative pathnames refer to files relative to the current directory. The name for the root of the file system (/) is a special-case absolute pathname that has no filename component.
+
+
+
+Example
+
+Listing the names of all the files in a directory is not difficult. Figure 1.3 shows a bare-bones implementation of the ls(1) command.
+
+Click here to view code image
+
+
+
+* * *
+
+
+
+#include "apue.h"
+
+#include <dirent.h>
+
+
+
+int
+
+main(int argc, char *argv[])
+
+{
+
+DIR *dp;
+
+struct dirent *dirp;
+
+
+
+if (argc != 2)
+
+err_quit("usage: ls directory_name");
+
+
+
+if ((dp = opendir(argv[1])) == NULL)
+
+err_sys("can't open %s", argv[1]);
+
+while ((dirp = readdir(dp)) != NULL)
+
+printf("%s\n", dirp->d_name);
+
+
+
+closedir(dp);
+
+exit(0);
+
+}
+
+
+
+* * *
+
+
+
+Figure 1.3 List all the files in a directory
+
+
+
+The notation ls(1) is the normal way to reference a particular entry in the UNIX system manuals. It refers to the entry for ls in Section 1. The sections are normally numbered 1 through 8, and all the entries within each section are arranged alphabetically. Throughout this text, we assume that you have a copy of the manuals for your UNIX system.
+
+Historically, UNIX systems lumped all eight sections together into what was called the UNIX Programmer's Manual. As the page count increased, the trend changed to distributing the sections among separate manuals: one for users, one for programmers, and one for system administrators, for example.
+
+Some UNIX systems further divide the manual pages within a given section, using an uppercase letter. For example, all the standard input/output (I/O) functions in AT&T [1990e] are indicated as being in Section 3S, as in fopen(3S). Other systems have replaced the numeric sections with alphabetic ones, such as C for commands.
+
+Today, most manuals are distributed in electronic form. If your manuals are online, the way to see the manual pages for the ls command would be something like
+
+man 1 ls
+
+or
+
+man -s1 ls
+
+Figure 1.3 is a program that just prints the name of every file in a directory, and nothing else. If the source file is named myls.c, we compile it into the default a.out executable file by running
+
+cc myls.c
+
+Historically, cc(1) is the C compiler. On systems with the GNU C compilation system, the C compiler is gcc(1). Here, cc is usually linked to gcc.
+
+Some sample output is
+
+Click here to view code image
+
+$ ./a.out /dev
+
+.
+
+..
+
+cdrom
+
+stderr
+
+stdout
+
+stdin
+
+fd
+
+sda4
+
+sda3
+
+sda2
+
+sda1
+
+sda
+
+tty2
+
+tty1
+
+console
+
+tty
+
+zero
+
+null
+
+many more lines that aren't shown
+
+mem
+
+$ ./a.out /etc/ssl/private
+
+can't open /etc/ssl/private: Permission denied
+
+$ ./a.out /dev/tty
+
+can't open /dev/tty: Not a directory
+
+Throughout this text, we'll show commands that we run and the resulting output in this fashion: Characters that we type are shown in this font, whereas output from programs is shown like this. If we need to add comments to this output, we'll show the comments in italics. The dollar sign that precedes our input is the prompt that is printed by the shell. We'll always show the shell prompt as a dollar sign.
+
+Note that the directory listing is not in alphabetical order. The ls command sorts the names before printing them.
+
+There are many details to consider in this 20-line program.
+
+? First, we include a header of our own: apue.h. We include this header in almost every program in this text. This header includes some standard system headers and defines numerous constants and function prototypes that we use throughout the examples in the text. A listing of this header is in Appendix B.
+
+? Next, we include a system header, dirent.h, to pick up the function prototypes for opendir and readdir, in addition to the definition of the dirent structure. On some systems, the definitions are split into multiple header files. For example, in the Ubuntu 12.04 Linux distribution, /usr/include/dirent.h declares the function prototypes and includes bits/dirent.h, which defines the dirent structure (and is actually stored in /usr/include/x86_64-linux-gnu/bits).
+
+? The declaration of the main function uses the style supported by the ISO C standard. (We'll have more to say about the ISO C standard in the next chapter.)
+
+? We take an argument from the command line, argv[1], as the name of the directory to list. In Chapter 7, we'll look at how the main function is called and how the command-line arguments and environment variables are accessible to the program.
+
+? Because the actual format of directory entries varies from one UNIX system to another, we use the functions opendir, readdir, and closedir to manipulate the directory.
+
+? The opendir function returns a pointer to a DIR structure, and we pass this pointer to the readdir function. We don't care what's in the DIR structure. We then call readdir in a loop, to read each directory entry. The readdir function returns a pointer to a dirent structure or, when it's finished with the directory, a null pointer. All we examine in the dirent structure is the name of each directory entry (d_name). Using this name, we could then call the stat function (Section 4.2) to determine all the attributes of the file.
+
+? We call two functions of our own to handle the errors: err_sys and err_quit. We can see from the preceding output that the err_sys function prints an informative message describing what type of error was encountered ("Permission denied" or "Not a directory"). These two error functions are shown and described in Appendix B. We also talk more about error handling in Section 1.7.
+
+? When the program is done, it calls the function exit with an argument of 0. The function exit terminates a program. By convention, an argument of 0 means OK, and an argument between 1 and 255 means that an error occurred. In Section 8.5, we show how any program, such as a shell or a program that we write, can obtain the exit status of a program that it executes.
+
+
+
+
+
+Working Directory
+
+
+Every process has a working directory, sometimes called the current working directory. This is the directory from which all relative pathnames are interpreted. A process can change its working directory with the chdir function.
+
+
+
+For example, the relative pathname doc/memo/joe refers to the file or directory joe, in the directory memo, in the directory doc, which must be a directory within the working directory. From looking just at this pathname, we know that both doc and memo have to be directories, but we can't tell whether joe is a file or a directory. The pathname /usr/lib/lint is an absolute pathname that refers to the file or directory lint in the directory lib, in the directory usr, which is in the root directory.
+
+
+
+
+
+Home Directory
+
+
+When we log in, the working directory is set to our home directory. Our home directory is obtained from our entry in the password file (Section 1.3).
+
+
+
+
+
+1.5. Input and Output
+
+
+File Descriptors
+
+
+File descriptors are normally small non-negative integers that the kernel uses to identify the files accessed by a process. Whenever it opens an existing file or creates a new file, the kernel returns a file descriptor that we use when we want to read or write the file.
+
+
+
+
+
+Standard Input, Standard Output, and Standard Error
+
+
+By convention, all shells open three descriptors whenever a new program is run: standard input, standard output, and standard error. If nothing special is done, as in the simple command
+
+
+
+ls
+
+then all three are connected to the terminal. Most shells provide a way to redirect any or all of these three descriptors to any file. For example,
+
+ls > file.list
+
+executes the ls command with its standard output redirected to the file named file.list.
+
+
+
+
+
+Unbuffered I/O
+
+
+Unbuffered I/O is provided by the functions open, read, write, lseek, and close. These functions all work with file descriptors.
+
+
+
+Example
+
+If we're willing to read from the standard input and write to the standard output, then the program in Figure 1.4 copies any regular file on a UNIX system.
+
+Click here to view code image
+
+
+
+* * *
+
+
+
+#include "apue.h"
+
+
+
+#define BUFFSIZE 4096
+
+
+
+int
+
+main(void)
+
+{
+
+int n;
+
+char buf[BUFFSIZE];
+
+
+
+while ((n = read(STDIN_FILENO, buf, BUFFSIZE)) > 0)
+
+if (write(STDOUT_FILENO, buf, n) != n)
+
+err_sys("write error");
+
+
+
+if (n < 0)
+
+err_sys("read error");
+
+
+
+exit(0);
+
+}
+
+
+
+* * *
+
+
+
+Figure 1.4 Copy standard input to standard output
+
+
+
+The <unistd.h> header, included by apue.h, and the two constants STDIN_FILENO and STDOUT_FILENO are part of the POSIX standard (about which we'll have a lot more to say in the next chapter). This header contains function prototypes for many of the UNIX system services, such as the read and write functions that we call.
+
+The constants STDIN_FILENO and STDOUT_FILENO are defined in <unistd.h> and specify the file descriptors for standard input and standard output. These values are 0 and 1, respectively, as required by POSIX.1, but we'll use the names for readability.
+
+In Section 3.9, we'll examine the BUFFSIZE constant in detail, seeing how various values affect the efficiency of the program. Regardless of the value of this constant, however, this program still copies any regular file.
+
+The read function returns the number of bytes that are read, and this value is used as the number of bytes to write. When the end of the input file is encountered, read returns 0 and the program stops. If a read error occurs, read returns -1. Most of the system functions return -1 when an error occurs.
+
+If we compile the program into the standard name (a.out) and execute it as
+
+./a.out > data
+
+standard input is the terminal, standard output is redirected to the file data, and standard error is also the terminal. If this output file doesn't exist, the shell creates it by default. The program copies lines that we type to the standard output until we type the end-of-file character (usually Control-D).
+
+If we run
+
+./a.out < infile > outfile
+
+then the file named infile will be copied to the file named outfile.
+
+In Chapter 3, we describe the unbuffered I/O functions in more detail.
+
+
+
+
+
+Standard I/O
+
+
+The standard I/O functions provide a buffered interface to the unbuffered I/O functions. Using standard I/O relieves us from having to choose optimal buffer sizes, such as the BUFFSIZE constant in Figure 1.4. The standard I/O functions also simplify dealing with lines of input (a common occurrence in UNIX applications). The fgets function, for example, reads an entire line. The read function, in contrast, reads a specified number of bytes. As we shall see in Section 5.4, the standard I/O library provides functions that let us control the style of buffering used by the library.
+
+
+
+The most common standard I/O function is printf. In programs that call printf, we'll always include <stdio.h>-normally by including apue.h-as this header contains the function prototypes for all the standard I/O functions.
+
+Example
+
+The program in Figure 1.5, which we'll examine in more detail in Section 5.8, is like the previous program that called read and write. This program copies standard input to standard output and can copy any regular file.
+
+Click here to view code image
+
+
+
+* * *
+
+
+
+#include "apue.h"
+
+
+
+int
+
+main(void)
+
+{
+
+int c;
+
+
+
+while ((c = getc(stdin)) != EOF)
+
+if (putc(c, stdout) == EOF)
+
+err_sys("output error");
+
+
+
+if (ferror(stdin))
+
+err_sys("input error");
+
+
+
+exit(0);
+
+}
+
+
+
+* * *
+
+
+
+Figure 1.5 Copy standard input to standard output, using standard I/O
+
+
+
+The function getc reads one character at a time, and this character is written by putc. After the last byte of input has been read, getc returns the constant EOF (defined in <stdio.h>). The standard I/O constants stdin and stdout are also defined in the <stdio.h> header and refer to the standard input and standard output.
+
+
+
+
+
+1.6. Programs and Processes
+
+
+Program
+
+
+A program is an executable file residing on disk in a directory. A program is read into memory and is executed by the kernel as a result of one of the seven exec functions. We'll cover these functions in Section 8.10.
+
+
+
+
+
+Processes and Process ID
+
+
+An executing instance of a program is called a process, a term used on almost every page of this text. Some operating systems use the term task to refer to a program that is being executed.
+
+
+
+The UNIX System guarantees that every process has a unique numeric identifier called the process ID. The process ID is always a non-negative integer.
+
+Example
+
+The program in Figure 1.6 prints its process ID.
+
+Click here to view code image
+
+
+
+* * *
+
+
+
+#include "apue.h"
+
+
+
+int
+
+main(void)
+
+{
+
+printf("hello world from process ID %ld\n", (long)getpid());
+
+exit(0);
+
+}
+
+
+
+* * *
+
+
+
+Figure 1.6 Print the process ID
+
+
+
+If we compile this program into the file a.out and execute it, we have
+
+Click here to view code image
+
+$ ./a.out
+
+hello world from process ID 851
+
+$ ./a.out
+
+hello world from process ID 854
+
+When this program runs, it calls the function getpid to obtain its process ID. As we shall see later, getpid returns a pid_t data type. We don't know its size; all we know is that the standards guarantee that it will fit in a long integer. Because we have to tell printf the size of each argument to be printed, we have to cast the value to the largest data type that it might use (in this case, a long integer). Although most process IDs will fit in an int, using a long promotes portability.
+
+
+
+
+
+Process Control
+
+
+There are three primary functions for process control: fork, exec, and waitpid. (The exec function has seven variants, but we often refer to them collectively as simply the exec function.)
+
+
+
+Example
+
+The process control features of the UNIX System are demonstrated using a simple program (Figure 1.7) that reads commands from standard input and executes the commands. This is a bare-bones implementation of a shell-like program.
+
+Click here to view code image
+
+
+
+* * *
+
+
+
+#include "apue.h"
+
+#include <sys/wait.h>
+
+
+
+int
+
+main(void)
+
+{
+
+char buf[MAXLINE]; /* from apue.h */
+
+pid_t pid;
+
+int status;
+
+
+
+printf("%% "); /* print prompt (printf requires %% to print %) */
+
+while (fgets(buf, MAXLINE, stdin) != NULL) {
+
+if (buf[strlen(buf) - 1] == '\n')
+
+buf[strlen(buf) - 1] = 0; /* replace newline with null */
+
+
+
+if ((pid = fork()) < 0) {
+
+err_sys("fork error");
+
+} else if (pid == 0) { /* child */
+
+execlp(buf, buf, (char *)0);
+
+err_ret("couldn't execute: %s", buf);
+
+exit(127);
+
+}
+
+
+
+/* parent */
+
+if ((pid = waitpid(pid, &status, 0)) < 0)
+
+err_sys("waitpid error");
+
+printf("%% ");
+
+}
+
+exit(0);
+
+}
+
+
+
+* * *
+
+
+
+Figure 1.7 Read commands from standard input and execute them
+
+
+
+There are several features to consider in this 30-line program.
+
+? We use the standard I/O function fgets to read one line at a time from the standard input. When we type the end-of-file character (which is often Control-D) as the first character of a line, fgets returns a null pointer, the loop stops, and the process terminates. In Chapter 18, we describe all the special terminal characters-end of file, backspace one character, erase entire line, and so on-and how to change them.
+
+? Because each line returned by fgets is terminated with a newline character, followed by a null byte, we use the standard C function strlen to calculate the length of the string, and then replace the newline with a null byte. We do this because the execlp function wants a null-terminated argument, not a newline-terminated argument.
+
+? We call fork to create a new process, which is a copy of the caller. We say that the caller is the parent and that the newly created process is the child. Then fork returns the non-negative process ID of the new child process to the parent, and returns 0 to the child. Because fork creates a new process, we say that it is called once-by the parent-but returns twice-in the parent and in the child.
+
+? In the child, we call execlp to execute the command that was read from the standard input. This replaces the child process with the new program file. The combination of fork followed by exec is called spawning a new process on some operating systems. In the UNIX System, the two parts are separated into individual functions. We'll say a lot more about these functions in Chapter 8.
+
+? Because the child calls execlp to execute the new program file, the parent wants to wait for the child to terminate. This is done by calling waitpid, specifying which process to wait for: the pid argument, which is the process ID of the child. The waitpid function also returns the termination status of the child-the status variable-but in this simple program, we don't do anything with this value. We could examine it to determine how the child terminated.
+
+? The most fundamental limitation of this program is that we can't pass arguments to the command we execute. We can't, for example, specify the name of a directory to list. We can execute ls only on the working directory. To allow arguments would require that we parse the input line, separating the arguments by some convention, probably spaces or tabs, and then pass each argument as a separate parameter to the execlp function. Nevertheless, this program is still a useful demonstration of the UNIX System's process control functions.
+
+If we run this program, we get the following results. Note that our program has a different prompt-the percent sign-to distinguish it from the shell's prompt.
+
+Click here to view code image
+
+$ ./a.out
+
+% date
+
+Sat Jan 21 19:42:07 EST 2012
+
+% who
+
+sar console Jan 1 14:59
+
+sar ttys000 Jan 1 14:59
+
+sar ttys001 Jan 15 15:28
+
+% pwd
+
+/home/sar/bk/apue/3e
+
+% ls
+
+Makefile
+
+a.out
+
+shell1.c
+
+% ^D type the end-of-file character
+
+$ the regular shell prompt
+
+The notation ^D is used to indicate a control character. Control characters are special characters formed by holding down the control key-often labeled Control or Ctrl-on your keyboard and then pressing another key at the same time. Control-D, or ^D, is the default end-of-file character. We'll see many more control characters when we discuss terminal I/O in Chapter 18.
+
+
+
+
+
+Threads and Thread IDs
+
+
+Usually, a process has only one thread of control-one set of machine instructions executing at a time. Some problems are easier to solve when more than one thread of control can operate on different parts of the problem. Additionally, multiple threads of control can exploit the parallelism possible on multiprocessor systems.
+
+
+
+All threads within a process share the same address space, file descriptors, stacks, and process-related attributes. Each thread executes on its own stack, although any thread can access the stacks of other threads in the same process. Because they can access the same memory, the threads need to synchronize access to shared data among themselves to avoid inconsistencies.
+
+Like processes, threads are identified by IDs. Thread IDs, however, are local to a process. A thread ID from one process has no meaning in another process. We use thread IDs to refer to specific threads as we manipulate the threads within a process.
+
+Functions to control threads parallel those used to control processes. Because threads were added to the UNIX System long after the process model was established, however, the thread model and the process model have some complicated interactions, as we shall see in Chapter 12.
+
+
+
+
+
+1.7. Error Handling
+
+
+When an error occurs in one of the UNIX System functions, a negative value is often returned, and the integer errno is usually set to a value that tells why. For example, the open function returns either a non-negative file descriptor if all is OK or -1 if an error occurs. An error from open has about 15 possible errno values, such as file doesn't exist, permission problem, and so on. Some functions use a convention other than returning a negative value. For example, most functions that return a pointer to an object return a null pointer to indicate an error.
+
+
+
+The file <errno.h> defines the symbol errno and constants for each value that errno can assume. Each of these constants begins with the character E. Also, the first page of Section 2 of the UNIX system manuals, named intro(2), usually lists all these error constants. For example, if errno is equal to the constant EACCES, this indicates a permission problem, such as insufficient permission to open the requested file.
+
+On Linux, the error constants are listed in the errno(3) manual page.
+
+POSIX and ISO C define errno as a symbol expanding into a modifiable lvalue of type integer. This can be either an integer that contains the error number or a function that returns a pointer to the error number. The historical definition is
+
+extern int errno;
+
+But in an environment that supports threads, the process address space is shared among multiple threads, and each thread needs its own local copy of errno to prevent one thread from interfering with another. Linux, for example, supports multithreaded access to errno by defining it as
+
+Click here to view code image
+
+extern int *__errno_location(void);
+
+#define errno (*__errno_location())
+
+There are two rules to be aware of with respect to errno. First, its value is never cleared by a routine if an error does not occur. Therefore, we should examine its value only when the return value from a function indicates that an error occurred. Second, the value of errno is never set to 0 by any of the functions, and none of the constants defined in <errno.h> has a value of 0.
+
+Two functions are defined by the C standard to help with printing error messages.
+
+#include <string.h>
+
+
+
+char *strerror(int errnum);
+
+Returns: pointer to message string
+
+
+
+This function maps errnum, which is typically the errno value, into an error message string and returns a pointer to the string.
+
+The perror function produces an error message on the standard error, based on the current value of errno, and returns.
+
+#include <stdio.h>
+
+
+
+void perror(const char *msg);
+
+
+
+It outputs the string pointed to by msg, followed by a colon and a space, followed by the error message corresponding to the value of errno, followed by a newline.
+
+Example
+
+Figure 1.8 shows the use of these two error functions.
+
+Click here to view code image
+
+
+
+* * *
+
+
+
+#include "apue.h"
+
+#include <errno.h>
+
+
+
+int
+
+main(int argc, char *argv[])
+
+{
+
+fprintf(stderr, "EACCES: %s\n", strerror(EACCES));
+
+errno = ENOENT;
+
+perror(argv[0]);
+
+exit(0);
+
+}
+
+
+
+* * *
+
+
+
+Figure 1.8 Demonstrate strerror and perror
+
+
+
+If this program is compiled into the file a.out, we have
+
+Click here to view code image
+
+$ ./a.out
+
+EACCES: Permission denied
+
+./a.out: No such file or directory
+
+Note that we pass the name of the program-argv[0], whose value is ./a.out-as the argument to perror. This is a standard convention in the UNIX System. By doing this, if the program is executed as part of a pipeline, as in
+
+prog1 < inputfile | prog2 | prog3 > outputfile
+
+we are able to tell which of the three programs generated a particular error message.
+
+Instead of calling either strerror or perror directly, the examples in this text use the error functions shown in Appendix B. These functions let us use the variable argument list facility of ISO C to handle error conditions with a single C statement.
+
+
+
+
+
+Error Recovery
+
+
+The errors defined in <errno.h> can be divided into two categories: fatal and nonfatal. A fatal error has no recovery action. The best we can do is print an error message on the user's screen or to a log file, and then exit. Nonfatal errors, on the other hand, can sometimes be dealt with more robustly. Most nonfatal errors are temporary, such as a resource shortage, and might not occur when there is less activity on the system.
+
+
+
+Resource-related nonfatal errors include EAGAIN, ENFILE, ENOBUFS, ENOLCK, ENOSPC, EWOULDBLOCK, and sometimes ENOMEM. EBUSY can be treated as nonfatal when it indicates that a shared resource is in use. Sometimes, EINTR can be treated as a nonfatal error when it interrupts a slow system call (more on this in Section 10.5).
+
+The typical recovery action for a resource-related nonfatal error is to delay and retry later. This technique can be applied in other circumstances. For example, if an error indicates that a network connection is no longer functioning, it might be possible for the application to delay a short time and then reestablish the connection. Some applications use an exponential backoff algorithm, waiting a longer period of time in each subsequent iteration.
+
+Ultimately, it is up to the application developer to determine the cases where an application can recover from an error. If a reasonable recovery strategy can be used, we can improve the robustness of our application by avoiding an abnormal exit.
+
+
+
+
+
+1.8. User Identification
+
+
+User ID
+
+
+The user ID from our entry in the password file is a numeric value that identifies us to the system. This user ID is assigned by the system administrator when our login name is assigned, and we cannot change it. The user ID is normally assigned to be unique for every user. We'll see how the kernel uses the user ID to check whether we have the appropriate permissions to perform certain operations.
+
+
+
+
+
+We call the user whose user ID is 0 either root or the superuser. The entry in the password file normally has a login name of root, and we refer to the special privileges of this user as superuser privileges. As we'll see in Chapter 4, if a process has superuser privileges, most file permission checks are bypassed. Some operating system functions are restricted to the superuser. The superuser has free rein over the system.
+
+Client versions of Mac OS X ship with the superuser account disabled; server versions ship with the account already enabled. Instructions are available on Apple's Web site describing how to enable it. See http://support.apple.com/kb/HT1528.
+
+
+
+
+
+Group ID
+
+
+Our entry in the password file also specifies our numeric group ID. This, too, is assigned by the system administrator when our login name is assigned. Typically, the password file contains multiple entries that specify the same group ID. Groups are normally used to collect users together into projects or departments. This allows the sharing of resources, such as files, among members of the same group. We'll see in Section 4.5 that we can set the permissions on a file so that all members of a group can access the file, whereas others outside the group cannot.
+
+
+
+There is also a group file that maps group names into numeric group IDs. The group file is usually /etc/group.
+
+The use of numeric user IDs and numeric group IDs for permissions is historical. With every file on disk, the file system stores both the user ID and the group ID of a file's owner. Storing both of these values requires only four bytes, assuming that each is stored as a two-byte integer. If the full ASCII login name and group name were used instead, additional disk space would be required. In addition, comparing strings during permission checks is more expensive than comparing integers.
+
+Users, however, work better with names than with numbers, so the password file maintains the mapping between login names and user IDs, and the group file provides the mapping between group names and group IDs. The ls -l command, for example, prints the login name of the owner of a file, using the password file to map the numeric user ID into the corresponding login name.
+
+Early UNIX systems used 16-bit integers to represent user and group IDs. Contemporary UNIX systems use 32-bit integers.
+
+Example
+
+The program in Figure 1.9 prints the user ID and the group ID.
+
+Click here to view code image
+
+
+
+* * *
+
+
+
+#include "apue.h"
+
+
+
+int
+
+main(void)
+
+{
+
+printf("uid = %d, gid = %d\n", getuid(), getgid());
+
+exit(0);
+
+}
+
+
+
+* * *
+
+
+
+Figure 1.9 Print user ID and group ID
+
+
+
+We call the functions getuid and getgid to return the user ID and the group ID. Running the program yields
+
+$ ./a.out
+
+uid = 205, gid = 105
+
+
+
+
+
+Supplementary Group IDs
+
+
+In addition to the group ID specified in the password file for a login name, most versions of the UNIX System allow a user to belong to other groups. This practice started with 4.2BSD, which allowed a user to belong to up to 16 additional groups. These supplementary group IDs are obtained at login time by reading the file /etc/group and finding the first 16 entries that list the user as a member. As we shall see in the next chapter, POSIX requires that a system support at least 8 supplementary groups per process, but most systems support at least 16.
+
+
+
+
+
+1.9. Signals
+
+
+Signals are a technique used to notify a process that some condition has occurred. For example, if a process divides by zero, the signal whose name is SIGFPE (floating-point exception) is sent to the process. The process has three choices for dealing with the signal.
+
+
+
+1. Ignore the signal. This option isn't recommended for signals that denote a hardware exception, such as dividing by zero or referencing memory outside the address space of the process, as the results are undefined.
+
+2. Let the default action occur. For a divide-by-zero condition, the default is to terminate the process.
+
+3. Provide a function that is called when the signal occurs (this is called "catching" the signal). By providing a function of our own, we'll know when the signal occurs and we can handle it as we wish.
+
+Many conditions generate signals. Two terminal keys, called the interrupt key-often the DELETE key or Control-C-and the quit key-often Control-backslash-are used to interrupt the currently running process. Another way to generate a signal is by calling the kill function. We can call this function from a process to send a signal to another process. Naturally, there are limitations: we have to be the owner of the other process (or the superuser) to be able to send it a signal.
+
+Example
+
+Recall the bare-bones shell example (Figure 1.7). If we invoke this program and press the interrupt key, the process terminates because the default action for this signal, named SIGINT, is to terminate the process. The process hasn't told the kernel to do anything other than the default with this signal, so the process terminates.
+
+To catch this signal, the program needs to call the signal function, specifying the name of the function to call when the SIGINT signal is generated. The function is named sig_int; when it's called, it just prints a message and a new prompt. Adding 11 lines to the program in Figure 1.7 gives us the version in Figure 1.10. (The 11 new lines are indicated with a plus sign at the beginning of the line.)
+
+Click here to view code image
+
+
+
+* * *
+
+
+
+#include "apue.h"
+
+#include <sys/wait.h>
+
+
+
++ static void sig_int(int); /* our signal-catching function */
+
++
+
+int
+
+main(void)
+
+{
+
+char buf[MAXLINE]; /* from apue.h */
+
+pid_t pid;
+
+int status;
+
+
+
++ if (signal(SIGINT, sig_int) == SIG_ERR)
+
++ err_sys("signal error");
+
++
+
+printf("%% "); /* print prompt (printf requires %% to print %) */
+
+while (fgets(buf, MAXLINE, stdin) != NULL) {
+
+if (buf[strlen(buf) - 1] == '\n')
+
+buf[strlen(buf) - 1] = 0; /* replace newline with null */
+
+
+
+if ((pid = fork()) < 0) {
+
+err_sys("fork error");
+
+} else if (pid == 0) { /* child */
+
+execlp(buf, buf, (char *)0);
+
+err_ret("couldn't execute: %s", buf);
+
+exit(127);
+
+}
+
+
+
+/* parent */
+
+if ((pid = waitpid(pid, &status, 0)) < 0)
+
+err_sys("waitpid error");
+
+printf("%% ");
+
+}
+
+exit(0);
+
+}
+
++
+
++ void
+
++ sig_int(int signo)
+
++ {
+
++ printf("interrupt\n%% ");
+
++ }
+
+
+
+* * *
+
+
+
+Figure 1.10 Read commands from standard input and execute them
+
+
+
+In Chapter 10, we'll take a long look at signals, as most nontrivial applications deal with them.
+
+
+
+
+
+1.10. Time Values
+
+
+Historically, UNIX systems have maintained two different time values:
+
+
+
+1. Calendar time. This value counts the number of seconds since the Epoch: 00:00:00 January 1, 1970, Coordinated Universal Time (UTC). (Older manuals refer to UTC as Greenwich Mean Time.) These time values are used to record the time when a file was last modified, for example.
+
+The primitive system data type time_t holds these time values.
+
+2. Process time. This is also called CPU time and measures the central processor resources used by a process. Process time is measured in clock ticks, which have historically been 50, 60, or 100 ticks per second.
+
+The primitive system data type clock_t holds these time values. (We'll show how to obtain the number of clock ticks per second with the sysconf function in Section 2.5.4.)
+
+When we measure the execution time of a process, as in Section 3.9, we'll see that the UNIX System maintains three values for a process:
+
+? Clock time
+
+? User CPU time
+
+? System CPU time
+
+The clock time, sometimes called wall clock time, is the amount of time the process takes to run, and its value depends on the number of other processes being run on the system. Whenever we report the clock time, the measurements are made with no other activities on the system.
+
+The user CPU time is the CPU time attributed to user instructions. The system CPU time is the CPU time attributed to the kernel when it executes on behalf of the process. For example, whenever a process executes a system service, such as read or write, the time spent within the kernel performing that system service is charged to the process. The sum of user CPU time and system CPU time is often called the CPU time.
+
+It is easy to measure the clock time, user time, and system time of any process: simply execute the time(1) command, with the argument to the time command being the command we want to measure. For example:
+
+Click here to view code image
+
+$ cd /usr/include
+
+$ time -p grep _POSIX_SOURCE */*.h > /dev/null
+
+
+
+real 0m0.81s
+
+user 0m0.11s
+
+sys 0m0.07s
+
+The output format from the time command depends on the shell being used, because some shells don't run /usr/bin/time, but instead have a separate built-in function to measure the time it takes commands to run.
+
+In Section 8.17, we'll see how to obtain these three times from a running process. The general topic of times and dates is covered in Section 6.10.
+
+
+
+
+
+1.11. System Calls and Library Functions
+
+
+All operating systems provide service points through which programs request services from the kernel. All implementations of the UNIX System provide a well-defined, limited number of entry points directly into the kernel called system calls (recall Figure 1.1). Version 7 of the Research UNIX System provided about 50 system calls, 4.4BSD provided about 110, and SVR4 had around 120. The exact number of system calls varies depending on the operating system version. More recent systems have seen incredible growth in the number of supported system calls. Linux 3.2.0 has 380 system calls and FreeBSD 8.0 has over 450.
+
+
+
+The system call interface has always been documented in Section 2 of the UNIX Programmer's Manual. Its definition is in the C language, no matter which implementation technique is actually used on any given system to invoke a system call. This differs from many older operating systems, which traditionally defined the kernel entry points in the assembly language of the machine.
+
+The technique used on UNIX systems is for each system call to have a function of the same name in the standard C library. The user process calls this function, using the standard C calling sequence. This function then invokes the appropriate kernel service, using whatever technique is required on the system. For example, the function may put one or more of the C arguments into general registers and then execute some machine instruction that generates a software interrupt in the kernel. For our purposes, we can consider the system calls to be C functions.
+
+Section 3 of the UNIX Programmer's Manual defines the general-purpose library functions available to programmers. These functions aren't entry points into the kernel, although they may invoke one or more of the kernel's system calls. For example, the printf function may use the write system call to output a string, but the strcpy (copy a string) and atoi (convert ASCII to integer) functions don't involve the kernel at all.
+
+From an implementor's point of view, the distinction between a system call and a library function is fundamental. From a user's perspective, however, the difference is not as critical. From our perspective in this text, both system calls and library functions appear as normal C functions. Both exist to provide services for application programs. We should realize, however, that we can replace the library functions, if desired, whereas the system calls usually cannot be replaced.
+
+Consider the memory allocation function malloc as an example. There are many ways to do memory allocation and its associated garbage collection (best fit, first fit, and so on). No single technique is optimal for all programs. The UNIX system call that handles memory allocation, sbrk(2), is not a general-purpose memory manager. It increases or decreases the address space of the process by a specified number of bytes. How that space is managed is up to the process. The memory allocation function, malloc(3), implements one particular type of allocation. If we don't like its operation, we can define our own malloc function, which will probably use the sbrk system call. In fact, numerous software packages implement their own memory allocation algorithms with the sbrk system call. Figure 1.11 shows the relationship between the application, the malloc function, and the sbrk system call.
+
+Figure 1.11 Separation of malloc function and sbrk system call
+
+
+
+Here we have a clean separation of duties: the system call in the kernel allocates an additional chunk of space on behalf of the process. The malloc library function manages this space from user level.
+
+Another example to illustrate the difference between a system call and a library function is the interface the UNIX System provides to determine the current time and date. Some operating systems provide one system call to return the time and another to return the date. Any special handling, such as the switch to or from daylight saving time, is handled by the kernel or requires human intervention. The UNIX System, in contrast, provides a single system call that returns the number of seconds since the Epoch: midnight, January 1, 1970, Coordinated Universal Time. Any interpretation of this value, such as converting it to a human-readable time and date using the local time zone, is left to the user process. The standard C library provides routines to handle most cases. These library routines handle such details as the various algorithms for daylight saving time.
+
+An application can either make a system call or call a library routine. Also realize that many library routines invoke a system call. This is shown in Figure 1.12.
+
+Figure 1.12 Difference between C library functions and system calls
+
+
+
+Another difference between system calls and library functions is that system calls usually provide a minimal interface, whereas library functions often provide more elaborate functionality. We've seen this already in the difference between the sbrk system call and the malloc library function. We'll see this difference again later, when we compare the unbuffered I/O functions (Chapter 3) and the standard I/O functions (Chapter 5).
+
+The process control system calls (fork, exec, and waitpid) are usually invoked by the user's application code directly. (Recall the bare-bones shell in Figure 1.7.) But some library routines exist to simplify certain common cases: the system and popen library routines, for example. In Section 8.13, we'll show an implementation of the system function that invokes the basic process control system calls. We'll enhance this example in Section 10.18 to handle signals correctly.
+
+To define the interface to the UNIX System that most programmers use, we have to describe both the system calls and some of the library functions. If we described only the sbrk system call, for example, we would skip the more programmer-friendly malloc library function that many applications use. In this text, we'll use the term function to refer to both system calls and library functions, except when the distinction is necessary.
+
+
+
+
+
+1.12. Summary
+
+
+This chapter has provided a short tour of the UNIX System. We've described some of the fundamental terms that we'll encounter over and over again. We've seen numerous small examples of UNIX programs to give us a feel for what the remainder of the text talks about.
+
+
+
+The next chapter is about standardization of the UNIX System and the effect of work in this area on current systems. Standards, particularly the ISO C standard and the POSIX.1 standard, will affect the rest of the text.
+
+
+
+
+
+Exercises
+
+
+1.1 Verify on your system that the directories dot and dot-dot are not the same, except in the root directory.
+
+
+
+1.2 In the output from the program in Figure 1.6, what happened to the processes with process IDs 852 and 853?
+
+1.3 In Section 1.7, the argument to perror is defined with the ISO C attribute const, whereas the integer argument to strerror isn't defined with this attribute. Why?
+
+1.4 If the calendar time is stored as a signed 32-bit integer, in which year will it overflow? How can we extend the overflow point? Are these strategies compatible with existing applications?
+
+1.5 If the process time is stored as a signed 32-bit integer, and if the system counts 100 ticks per second, after how many days will the value overflow?
+
+
+
+
+
+2. UNIX Standardization and Implementations
+
+
+2.1. Introduction
+
+
+Much work has gone into standardizing the UNIX programming environment and the C programming language. Although applications have always been quite portable across different versions of the UNIX operating system, the proliferation of versions and differences during the 1980s led many large users, such as the U.S. government, to call for standardization.
+
+
+
+In this chapter we first look at the various standardization efforts that have been under way over the past two and a half decades. We then discuss the effects of these UNIX programming standards on the operating system implementations that are described in this book. An important part of all the standardization efforts is the specification of various limits that each implementation must define, so we look at these limits and the various ways to determine their values.
+
+
+
+
+
+2.2. UNIX Standardization
+
+
+2.2.1. ISO C
+
+
+In late 1989, ANSI Standard X3.159-1989 for the C programming language was approved. This standard was also adopted as International Standard ISO/IEC 9899:1990. ANSI is the American National Standards Institute, the U.S. member in the International Organization for Standardization (ISO). IEC stands for the International Electrotechnical Commission.
+
+
+
+
+
+The C standard is now maintained and developed by the ISO/IEC international standardization working group for the C programming language, known as ISO/IEC JTC1/SC22/WG14, or WG14 for short. The intent of the ISO C standard is to provide portability of conforming C programs to a wide variety of operating systems, not only the UNIX System. This standard defines not only the syntax and semantics of the programming language but also a standard library [Chapter 7 of ISO 1999; Plauger 1992; Appendix B of Kernighan and Ritchie 1988]. This library is important because all contemporary UNIX systems, such as the ones described in this book, provide the library routines that are specified in the C standard.
+
+In 1999, the ISO C standard was updated and approved as ISO/IEC 9899:1999, largely to improve support for applications that perform numerical processing. The changes don't affect the POSIX interfaces described in this book, except for the addition of the restrict keyword to some of the function prototypes. This keyword is used to tell the compiler which pointer references can be optimized, by indicating that the object to which the pointer refers is accessed in the function only via that pointer.
+
+Since 1999, three technical corrigenda have been published to correct errors in the ISO C standard-one in 2001, one in 2004, and one in 2007. As with most standards, there is a delay between the standard's approval and the modification of software to conform to it. As each vendor's compilation systems evolve, they add more support for the latest version of the ISO C standard.
+
+A summary of the current level of conformance of gcc to the 1999 version of the ISO C standard is available at http://gcc.gnu.org/c99status.html. Although the C standard was updated in 2011, we deal only with the 1999 version in this text, because the other standards haven't yet caught up with the relevant changes.
+
+The ISO C library can be divided into 24 areas, based on the headers defined by the standard (see Figure 2.1). The POSIX.1 standard includes these headers, as well as others. As Figure 2.1 shows, all of these headers are supported by the four implementations (FreeBSD 8.0, Linux 3.2.0, Mac OS X 10.6.8, and Solaris 10) that are described later in this chapter.
+
+Figure 2.1 Headers defined by the ISO C standard
+
+
+
+The ISO C headers depend on which version of the C compiler is used with the operating system. FreeBSD 8.0 ships with version 4.2.1 of gcc, Solaris 10 ships with version 3.4.3 of gcc (in addition to its own C compiler in Sun Studio), Ubuntu 12.04 (Linux 3.2.0) ships with version 4.6.3 of gcc, and Mac OS X 10.6.8 ships with both versions 4.0.1 and 4.2.1 of gcc.
+
+
+
+
+
+2.2.2. IEEE POSIX
+
+
+POSIX is a family of standards initially developed by the IEEE (Institute of Electrical and Electronics Engineers). POSIX stands for Portable Operating System Interface. It originally referred only to the IEEE Standard 1003.1-1988-the operating system interface-but was later extended to include many of the standards and draft standards with the 1003 designation, including the shell and utilities (1003.2).
+
+
+
+Of specific interest to this book is the 1003.1 operating system interface standard, whose goal is to promote the portability of applications among various UNIX System environments. This standard defines the services that an operating system must provide if it is to be "POSIX compliant," and has been adopted by most computer vendors. Although the 1003.1 standard is based on the UNIX operating system, the standard is not restricted to UNIX and UNIX-like systems. Indeed, some vendors supplying proprietary operating systems claim that these systems have been made POSIX compliant, while still leaving all their proprietary features in place.
+
+Because the 1003.1 standard specifies an interface and not an implementation, no distinction is made between system calls and library functions. All the routines in the standard are called functions.
+
+Standards are continually evolving, and the 1003.1 standard is no exception. The 1988 version, IEEE Standard 1003.1-1988, was modified and submitted to the International Organization for Standardization. No new interfaces or features were added, but the text was revised. The resulting document was published as IEEE Standard 1003.1-1990 [IEEE 1990]. This is also International Standard ISO/IEC 9945-1:1990. This standard was commonly referred to as POSIX.1, a term which we'll use in this text to refer to the different versions of the standard.
+
+The IEEE 1003.1 working group continued to make changes to the standard. In 1996, a revised version of the IEEE 1003.1 standard was published. It included the 1003.1-1990 standard, the 1003.1b-1993 real-time extensions standard, and the interfaces for multithreaded programming, called pthreads for POSIX threads. This version of the standard was also published as International Standard ISO/IEC 9945-1:1996. More real-time interfaces were added in 1999 with the publication of IEEE Standard 1003.1d-1999. A year later, IEEE Standard 1003.1j-2000 was published, including even more real-time interfaces, and IEEE Standard 1003.1q-2000 was published, adding event-tracing extensions to the standard.
+
+The 2001 version of 1003.1 departed from the prior versions in that it combined several 1003.1 amendments, the 1003.2 standard, and portions of the Single UNIX Specification (SUS), Version 2 (more on this later). The resulting standard, IEEE Standard 1003.1-2001, included the following other standards:
+
+? ISO/IEC 9945-1 (IEEE Standard 1003.1-1996), which includes
+
+? IEEE Standard 1003.1-1990
+
+? IEEE Standard 1003.1b-1993 (real-time extensions)
+
+? IEEE Standard 1003.1c-1995 (pthreads)
+
+? IEEE Standard 1003.1i-1995 (real-time technical corrigenda)
+
+? IEEE P1003.1a draft standard (system interface amendment)
+
+? IEEE Standard 1003.1d-1999 (advanced real-time extensions)
+
+? IEEE Standard 1003.1j-2000 (more advanced real-time extensions)
+
+? IEEE Standard 1003.1q-2000 (tracing)
+
+? Parts of IEEE Standard 1003.1g-2000 (protocol-independent interfaces)
+
+? ISO/IEC 9945-2 (IEEE Standard 1003.2-1993)
+
+? IEEE P1003.2b draft standard (shell and utilities amendment)
+
+? IEEE Standard 1003.2d-1994 (batch extensions)
+
+? The Base Specifications of the Single UNIX Specification, version 2, which include
+
+? System Interface Definitions, Issue 5
+
+? Commands and Utilities, Issue 5
+
+? System Interfaces and Headers, Issue 5
+
+? Open Group Technical Standard, Networking Services, Issue 5.2
+
+? ISO/IEC 9899:1999, Programming Languages-C
+
+In 2004, the POSIX.1 specification was updated with technical corrections; more comprehensive changes were made in 2008 and released as Issue 7 of the Base Specifications. ISO approved this version at the end of 2008 and published it in 2009 as International Standard ISO/IEC 9945:2009. It is based on several other standards:
+
+? IEEE Standard 1003.1, 2004 Edition
+
+? Open Group Technical Standard, 2006, Extended API Set, Parts 1-4
+
+? ISO/IEC 9899:1999, including corrigenda
+
+Figure 2.2, Figure 2.3, and Figure 2.4 summarize the required and optional headers as specified by POSIX.1. Because POSIX.1 includes the ISO C standard library functions, it also requires the headers listed in Figure 2.1. All four figures summarize which headers are included in the implementations discussed in this book.
+
+Figure 2.2 Required headers defined by the POSIX standard
+
+
+
+Figure 2.3 XSI option headers defined by the POSIX standard
+
+
+
+Figure 2.4 Optional headers defined by the POSIX standard
+
+
+
+In this text we describe the 2008 edition of POSIX.1. Its interfaces are divided into required ones and optional ones. The optional interfaces are further divided into 40 sections, based on functionality. The sections containing nonobsolete programming interfaces are summarized in Figure 2.5 with their respective option codes. Option codes are two- to three-character abbreviations that identify the interfaces that belong to each functional area and highlight text describing aspects of the standard that depend on the support of a particular option. Many options deal with real-time extensions.
+
+Figure 2.5 POSIX.1 optional interface groups and codes
+
+
+
+POSIX.1 does not include the notion of a superuser. Instead, certain operations require "appropriate privileges," although POSIX.1 leaves the definition of this term up to the implementation. UNIX systems that conform to the Department of Defense's security guidelines have many levels of security. In this text, however, we use the traditional terminology and refer to operations that require superuser privilege.
+
+After more than twenty years of work, the standards are mature and stable. The POSIX.1 standard is maintained by an open working group known as the Austin Group (http://www.opengroup.org/austin). To ensure that they are still relevant, the standards need to be either updated or reaffirmed every so often.
+
+
+
+
+
+2.2.3. The Single UNIX Specification
+
+
+The Single UNIX Specification, a superset of the POSIX.1 standard, specifies additional interfaces that extend the functionality provided by the POSIX.1 specification. POSIX.1 is equivalent to the Base Specifications portion of the Single UNIX Specification.
+
+
+
+The X/Open System Interfaces (XSI) option in POSIX.1 describes optional interfaces and defines which optional portions of POSIX.1 must be supported for an implementation to be deemed XSI conforming. These include file synchronization, thread stack address and size attributes, thread process-shared synchronization, and the _XOPEN_UNIX symbolic constant (marked "SUS mandatory" in Figure 2.5). Only XSI-conforming implementations can be called UNIX systems.
+
+The Open Group owns the UNIX trademark and uses the Single UNIX Specification to define the interfaces an implementation must support to call itself a UNIX system. Vendors must file conformance statements, pass test suites to verify conformance, and license the right to use the UNIX trademark.
+
+Several of the interfaces that are optional for XSI-conforming systems are divided into option groups based on common functionality, as follows:
+
+? Encryption: denoted by the _XOPEN_CRYPT symbolic constant
+
+? Real-time: denoted by the _XOPEN_REALTIME symbolic constant
+
+? Advanced real-time
+
+? Real-time threads: denoted by _XOPEN_REALTIME_THREADS
+
+? Advanced real-time threads
+
+The Single UNIX Specification is a publication of The Open Group, which was formed in 1996 as a merger of X/Open and the Open Software Foundation (OSF), both industry consortia. X/Open used to publish the X/Open Portability Guide, which adopted specific standards and filled in the gaps where functionality was missing. The goal of these guides was to improve application portability beyond what was possible by merely conforming to published standards.
+
+The first version of the Single UNIX Specification was published by X/Open in 1994. It was also known as "Spec 1170," because it contained roughly 1,170 interfaces. It grew out of the Common Open Software Environment (COSE) initiative, whose goal was to improve application portability across all implementations of the UNIX operating system. The COSE group-Sun, IBM, HP, Novell/USL, and OSF-went further than endorsing standards by including interfaces used by common commercial applications. The resulting 1,170 interfaces were selected from these applications, and also included the X/Open Common Application Environment (CAE), Issue 4 (known as "XPG4" as a historical reference to its predecessor, the X/Open Portability Guide), the System V Interface Definition (SVID), Edition 3, Level 1 interfaces, and the OSF Application Environment Specification (AES) Full Use interfaces.
+
+The second version of the Single UNIX Specification was published by The Open Group in 1997. The new version added support for threads, real-time interfaces, 64-bit processing, large files, and enhanced multibyte character processing.
+
+The third version of the Single UNIX Specification (SUSv3) was published by The Open Group in 2001. The Base Specifications of SUSv3 are the same as IEEE Standard 1003.1-2001 and are divided into four sections: Base Definitions, System Interfaces, Shell and Utilities, and Rationale. SUSv3 also includes X/Open Curses Issue 4, Version 2, but this specification is not part of POSIX.1.
+
+In 2002, ISO approved the IEEE Standard 1003.1-2001 as International Standard ISO/IEC 9945:2002. The Open Group updated the 1003.1 standard again in 2003 to include technical corrections, and ISO approved this as International Standard ISO/IEC 9945:2003. In April 2004, The Open Group published the Single UNIX Specification, Version 3, 2004 Edition. It merged more technical corrections into the main text of the standard.
+
+In 2008, the Single UNIX Specification was updated, including corrections and new interfaces, removing obsolete interfaces, and marking other interfaces as being obsolescent in preparation for future removal. Additionally, some previously optional interfaces were promoted to nonoptional status, including asynchronous I/O, barriers, clock selection, memory-mapped files, memory protection, reader-writer locks, real-time signals, POSIX semaphores, spin locks, thread-safe functions, threads, timeouts, and timers. The resulting standard is known as Issue 7 of the Base Specifications, and is the same as POSIX.1-2008. The Open Group bundled this version with an updated X/Open Curses specification and released them as version 4 of the Single UNIX Specification in 2010. We'll refer to this as SUSv4.
+
+
+
+
+
+2.2.4. FIPS
+
+
+FIPS stands for Federal Information Processing Standard. It was published by the U.S. government, which used it for the procurement of computer systems. FIPS 151-1 (April 1989) was based on the IEEE Standard 1003.1-1988 and a draft of the ANSI C standard. This was followed by FIPS 151-2 (May 1993), which was based on the IEEE Standard 1003.1-1990. FIPS 151-2 required some features that POSIX.1 listed as optional. All these options were included as mandatory in POSIX.1-2001.
+
+
+
+The effect of the POSIX.1 FIPS was to require any vendor that wished to sell POSIX.1-compliant computer systems to the U.S. government to support some of the optional features of POSIX.1. The POSIX.1 FIPS has since been withdrawn, so we won't consider it further in this text.
+
+
+
+
+
+2.3. UNIX System Implementations
+
+
+The previous section described ISO C, IEEE POSIX, and the Single UNIX Specification-three standards originally created by independent organizations. Standards, however, are interface specifications. How do these standards relate to the real world? These standards are taken by vendors and turned into actual implementations. In this book, we are interested in both these standards and their implementation.
+
+
+
+Section 1.1 of McKusick et al. [1996] gives a detailed history (and a nice picture) of the UNIX System family tree. Everything starts from the Sixth Edition (1976) and Seventh Edition (1979) of the UNIX Time-Sharing System on the PDP-11 (usually called Version 6 and Version 7, respectively). These were the first releases widely distributed outside of Bell Laboratories. Three branches of the tree evolved.
+
+1. One at AT&T that led to System III and System V, the so-called commercial versions of the UNIX System.
+
+2. One at the University of California at Berkeley that led to the 4.xBSD implementations.
+
+3. The research version of the UNIX System, developed at the Computing Science Research Center of AT&T Bell Laboratories, that led to the UNIX Time-Sharing System 8th Edition, 9th Edition, and ended with the 10th Edition in 1990.
+
+
+
+
+
+2.3.1. UNIX System V Release 4
+
+
+UNIX System V Release 4 (SVR4) was a product of AT&T's UNIX System Laboratories (USL, formerly AT&T's UNIX Software Operation). SVR4 merged functionality from AT&T UNIX System V Release 3.2 (SVR3.2), the SunOS operating system from Sun Microsystems, the 4.3BSD release from the University of California, and the Xenix system from Microsoft into one coherent operating system. (Xenix was originally developed from Version 7, with many features later taken from System V.) The SVR4 source code was released in late 1989, with the first end-user copies becoming available during 1990. SVR4 conformed to both the POSIX 1003.1 standard and the X/Open Portability Guide, Issue 3 (XPG3).
+
+
+
+AT&T also published the System V Interface Definition (SVID) [AT&T 1989]. Issue 3 of the SVID specified the functionality that an operating system must offer to qualify as a conforming implementation of UNIX System V Release 4. As with POSIX.1, the SVID specified an interface, not an implementation. No distinction was made in the SVID between system calls and library functions. The reference manual for an actual implementation of SVR4 must be consulted to see this distinction [AT&T 1990e].
+
+
+
+
+
+2.3.2. 4.4BSD
+
+
+The Berkeley Software Distribution (BSD) releases were produced and distributed by the Computer Systems Research Group (CSRG) at the University of California at Berkeley; 4.2BSD was released in 1983 and 4.3BSD in 1986. Both of these releases ran on the VAX minicomputer. The next release, 4.3BSD Tahoe in 1988, also ran on a particular minicomputer called the Tahoe. (The book by Leffler et al. [1989] describes the 4.3BSD Tahoe release.) This was followed in 1990 with the 4.3BSD Reno release; 4.3BSD Reno supported many of the POSIX.1 features.
+
+
+
+The original BSD systems contained proprietary AT&T source code and were covered by AT&T licenses. To obtain the source code to the BSD system you had to have a UNIX source license from AT&T. This changed as more and more of the AT&T source code was replaced over the years with non-AT&T source code and as many of the new features added to the Berkeley system were derived from non-AT&T sources.
+
+In 1989, Berkeley identified much of the non-AT&T source code in the 4.3BSD Tahoe release and made it publicly available as the BSD Networking Software, Release 1.0. Release 2.0 of the BSD Networking Software followed in 1991, which was derived from the 4.3BSD Reno release. The intent was that most, if not all, of the 4.4BSD system would be free of AT&T license restrictions, thus making the source code available to all.
+
+4.4BSD-Lite was intended to be the final release from the CSRG. Its introduction was delayed, however, because of legal battles with USL. Once the legal differences were resolved, 4.4BSD-Lite was released in 1994, fully unencumbered, so no UNIX source license was needed to receive it. The CSRG followed this with a bug-fix release in 1995. This release, 4.4BSD-Lite, release 2, was the final version of BSD from the CSRG. (This version of BSD is described in the book by McKusick et al. [1996].)
+
+The UNIX system development done at Berkeley started with PDP-11s, then moved to the VAX minicomputer, and then to other so-called workstations. During the early 1990s, support was provided to Berkeley for the popular 80386-based personal computers, leading to what is called 386BSD. This support was provided by Bill Jolitz and was documented in a series of monthly articles in Dr. Dobb's Journal throughout 1991. Much of this code appeared in the BSD Networking Software, Release 2.0.
+
+
+
+
+
+2.3.3. FreeBSD
+
+
+FreeBSD is based on the 4.4BSD-Lite operating system. The FreeBSD project was formed to carry on the BSD line after the Computing Science Research Group at the University of California at Berkeley decided to end its work on the BSD versions of the UNIX operating system, and the 386BSD project seemed to be neglected for too long.
+
+
+
+All software produced by the FreeBSD project is freely available in both binary and source forms. The FreeBSD 8.0 operating system was one of the four operating systems used to test the examples in this book.
+
+Several other BSD-based free operating systems are available. The NetBSD project (http://www.netbsd.org) is similar to the FreeBSD project, but emphasizes portability between hardware platforms. The OpenBSD project (http://www.openbsd.org) is similar to FreeBSD but places a greater emphasis on security.
+
+
+
+
+
+2.3.4. Linux
+
+
+Linux is an operating system that provides a rich programming environment similar to that of a UNIX System; it is freely available under the GNU Public License. The popularity of Linux is somewhat of a phenomenon in the computer industry. Linux is distinguished by often being the first operating system to support new hardware.
+
+
+
+Linux was created in 1991 by Linus Torvalds as a replacement for MINIX. A grass-roots effort then sprang up, whereby many developers across the world volunteered their time to use and enhance it.
+
+The Ubuntu 12.04 distribution of Linux was one of the operating systems used to test the examples in this book. That distribution uses the 3.2.0 version of the Linux operating system kernel.
+
+
+
+
+
+2.3.5. Mac OS X
+
+
+Mac OS X is based on entirely different technology than prior versions. The core operating system is called "Darwin," and is based on a combination of the Mach kernel (Accetta et al. [1986]), the FreeBSD operating system, and an object-oriented framework for drivers and other kernel extensions. As of version 10.5, the Intel port of Mac OS X has been certified to be a UNIX system. (For more information on UNIX certification, see http://www.opengroup.org/certification/idx/unix.html.)
+
+
+
+Mac OS X version 10.6.8 (Darwin 10.8.0) was used as one of the operating systems to test the examples in this book.
+
+
+
+
+
+2.3.6. Solaris
+
+
+Solaris is the version of the UNIX System developed by Sun Microsystems (now Oracle). Solaris is based on System V Release 4, but includes more than fifteen years of enhancements from the engineers at Sun Microsystems. It is arguably the only commercially successful SVR4 descendant, and is formally certified to be a UNIX system.
+
+
+
+In 2005, Sun Microsystems released most of the Solaris operating system source code to the public as part of the OpenSolaris open source operating system in an attempt to build an external developer community around Solaris.
+
+The Solaris 10 UNIX system was one of the operating systems used to test the examples in this book.
+
+
+
+
+
+2.3.7. Other UNIX Systems
+
+
+Other versions of the UNIX system that have been certified in the past include
+
+
+
+? AIX, IBM's version of the UNIX System
+
+? HP-UX, Hewlett-Packard's version of the UNIX System
+
+? IRIX, the UNIX System version shipped by Silicon Graphics
+
+? UnixWare, the UNIX System descended from SVR4 sold by SCO
+
+
+
+
+
+2.4. Relationship of Standards and Implementations
+
+
+The standards that we've mentioned define a subset of any actual system. The focus of this book is on four real systems: FreeBSD 8.0, Linux 3.2.0, Mac OS X 10.6.8, and Solaris 10. Although only Mac OS X and Solaris can call themselves UNIX systems, all four provide a similar programming environment. Because all four are POSIX compliant to varying degrees, we will also concentrate on the features required by the POSIX.1 standard, noting any differences between POSIX and the actual implementations of these four systems. Those features and routines that are specific to only a particular implementation are clearly marked. We'll also note any features that are required on UNIX systems but are optional on other POSIX-conforming systems.
+
+
+
+Be aware that the implementations provide backward compatibility for features in earlier releases, such as SVR3.2 and 4.3BSD. For example, Solaris supports both the POSIX.1 specification for nonblocking I/O (O_NONBLOCK) and the traditional System V method (O_NDELAY). In this text, we'll use only the POSIX.1 feature, although we'll mention the nonstandard feature that it replaces. Similarly, both SVR3.2 and 4.3BSD provided reliable signals in a way that differs from the POSIX.1 standard. In Chapter 10 we describe only the POSIX.1 signal mechanism.
+
+
+
+
+
+2.5. Limits
+
+
+The implementations define many magic numbers and constants. Many of these have been hard coded into programs or were determined using ad hoc techniques. With the various standardization efforts that we've described, more portable methods are now provided to determine these magic numbers and implementation-defined limits, greatly improving the portability of software written for the UNIX environment.
+
+
+
+Two types of limits are needed:
+
+1. Compile-time limits (e.g., what's the largest value of a short integer?)
+
+2. Runtime limits (e.g., how many bytes in a filename?)
+
+Compile-time limits can be defined in headers that any program can include at compile time. But runtime limits require the process to call a function to obtain the limit's value.
+
+Additionally, some limits can be fixed on a given implementation-and could therefore be defined statically in a header-yet vary on another implementation and would require a runtime function call. An example of this type of limit is the maximum number of bytes in a filename. Before SVR4, System V historically allowed only 14 bytes in a filename, whereas BSD-derived systems increased this number to 255. Most UNIX System implementations these days support multiple file system types, and each type has its own limit. This is the case of a runtime limit that depends on where in the file system the file in question is located. A filename in the root file system, for example, could have a 14-byte limit, whereas a filename in another file system could have a 255-byte limit.
+
+To solve these problems, three types of limits are provided:
+
+1. Compile-time limits (headers)
+
+2. Runtime limits not associated with a file or directory (the sysconf function)
+
+3. Runtime limits that are associated with a file or a directory (the pathconf and fpathconf functions)
+
+To further confuse things, if a particular runtime limit does not vary on a given system, it can be defined statically in a header. If it is not defined in a header, however, the application must call one of the three conf functions (which we describe shortly) to determine its value at runtime.
+
+
+
+
+
+2.5.1. ISO C Limits
+
+
+All of the compile-time limits defined by ISO C are defined in the file <limits.h> (see Figure 2.6). These constants don't change in a given system. The third column in Figure 2.6 shows the minimum acceptable values from the ISO C standard. This allows for a system with 16-bit integers using one's-complement arithmetic. The fourth column shows the values from a Linux system with 32-bit integers using two's-complement arithmetic. Note that none of the unsigned data types has a minimum value, as this value must be 0 for an unsigned data type. On a 64-bit system, the values for long integer maximums match the maximum values for long long integers.
+
+
+
+Figure 2.6 Sizes of integral values from <limits.h>
+
+
+
+One difference that we will encounter is whether a system provides signed or unsigned character values. From the fourth column in Figure 2.6, we see that this particular system uses signed characters. We see that CHAR_MIN equals SCHAR_MIN and that CHAR_MAX equals SCHAR_MAX. If the system uses unsigned characters, we would have CHAR_MIN equal to 0 and CHAR_MAX equal to UCHAR_MAX.
+
+The floating-point data types in the header <float.h> have a similar set of definitions. Anyone doing serious floating-point work should examine this file.
+
+Although the ISO C standard specifies minimum acceptable values for integral data types, POSIX.1 makes extensions to the C standard. To conform to POSIX.1, an implementation must support a minimum value of 2,147,483,647 for INT_MAX, -2,147,483,647 for INT_MIN, and 4,294,967,295 for UINT_MAX. Because POSIX.1 requires implementations to support an 8-bit char, CHAR_BIT must be 8, SCHAR_MIN must be -128, SCHAR_MAX must be 127, and UCHAR_MAX must be 255.
+
+Another ISO C constant that we'll encounter is FOPEN_MAX, the minimum number of standard I/O streams that the implementation guarantees can be open at once. This constant is found in the <stdio.h> header, and its minimum value is 8. The POSIX.1 value STREAM_MAX, if defined, must have the same value as FOPEN_MAX.
+
+ISO C also defines the constant TMP_MAX in <stdio.h>. It is the maximum number of unique filenames generated by the tmpnam function. We'll have more to say about this constant in Section 5.13.
+
+Although ISO C defines the constant FILENAME_MAX, we avoid using it, because POSIX.1 provides better alternatives (NAME_MAX and PATH_MAX). We'll see these constants shortly.
+
+Figure 2.7 shows the values of FILENAME_MAX, FOPEN_MAX, and TMP_MAX on the four platforms we discuss in this book.
+
+Figure 2.7 ISO limits on various platforms
+
+
+
+
+
+2.5.2. POSIX Limits
+
+
+POSIX.1 defines numerous constants that deal with implementation limits of the operating system. Unfortunately, this is one of the more confusing aspects of POSIX.1. Although POSIX.1 defines numerous limits and constants, we'll concern ourselves with only the ones that affect the base POSIX.1 interfaces. These limits and constants are divided into the following seven categories:
+
+
+
+1. Numerical limits: LONG_BIT, SSIZE_MAX, and WORD_BIT
+
+2. Minimum values: the 25 constants in Figure 2.8
+
+Figure 2.8 POSIX.1 minimum values from <limits.h>
+
+
+
+3. Maximum value: _POSIX_CLOCKRES_MIN
+
+4. Runtime increasable values: CHARCLASS_NAME_MAX, COLL_WEIGHTS_MAX, LINE_MAX, NGROUPS_MAX, and RE_DUP_MAX
+
+5. Runtime invariant values, possibly indeterminate: the 17 constants in Figure 2.9 (plus an additional four constants introduced in Section 12.2 and three constants introduced in Section 14.5)
+
+Figure 2.9 POSIX.1 runtime invariant values from <limits.h>
+
+
+
+6. Other invariant values: NL_ARGMAX, NL_MSGMAX, NL_SETMAX, and NL_TEXTMAX
+
+7. Pathname variable values: FILESIZEBITS, LINK_MAX, MAX_CANON, MAX_INPUT, NAME_MAX, PATH_MAX, PIPE_BUF, and SYMLINK_MAX
+
+Of these limits and constants, some may be defined in <limits.h>, and others may or may not be defined, depending on certain conditions. We describe the limits and constants that may or may not be defined in Section 2.5.4, when we describe the sysconf, pathconf, and fpathconf functions. The 25 minimum values are shown in Figure 2.8.
+
+These minimum values do not change from one system to another. They specify the most restrictive values for these features. A conforming POSIX.1 implementation must provide values that are at least this large. This is why they are called minimums, although their names all contain MAX. Also, to ensure portability, a strictly conforming application must not require a larger value. We describe what each of these constants refers to as we proceed through the text.
+
+A strictly conforming POSIX application is different from an application that is merely POSIX conforming. A POSIX-conforming application uses only interfaces defined in IEEE Standard 1003.1-2008. A strictly conforming POSIX application must meet further restrictions, such as not relying on any undefined behavior, not using any obsolescent interfaces, and not requiring values of constants larger than the minimums shown in Figure 2.8.
+
+Unfortunately, some of these invariant minimum values are too small to be of practical use. For example, most UNIX systems today provide far more than 20 open files per process. Also, the minimum limit of 256 for _POSIX_PATH_MAX is too small. Pathnames can exceed this limit. This means that we can't use the two constants _POSIX_OPEN_MAX and _POSIX_PATH_MAX as array sizes at compile time.
+
+Each of the 25 invariant minimum values in Figure 2.8 has an associated implementation value whose name is formed by removing the _POSIX_ prefix from the name in Figure 2.8. The names without the leading _POSIX_ were intended to be the actual values that a given implementation supports. (These 25 implementation values are from items 1, 4, 5, and 7 from our list earlier in this section: 2 of the runtime increasable values, 15 of the runtime invariant values, and 7 of the pathname variable values, along with SSIZE_MAX from the numeric values.) The problem is that not all of the 25 implementation values are guaranteed to be defined in the <limits.h> header.
+
+For example, a particular value may not be included in the header if its actual value for a given process depends on the amount of memory on the system. If the values are not defined in the header, we can't use them as array bounds at compile time. To determine the actual implementation value at runtime, POSIX.1 decided to provide three functions for us to call-sysconf, pathconf, and fpathconf. There is still a problem, however, because some of the values are defined by POSIX.1 as being possibly "indeterminate" (logically infinite). This means that the value has no practical upper bound. On Solaris, for example, the number of functions you can register with atexit to be run when a process ends is limited only by the amount of memory on the system. Thus ATEXIT_MAX is considered indeterminate on Solaris. We'll return to this problem of indeterminate runtime limits in Section 2.5.5.
+
+
+
+
+
+2.5.3. XSI Limits
+
+
+The XSI option also defines constants representing implementation limits. They include:
+
+
+
+1. Minimum values: the five constants in Figure 2.10
+
+Figure 2.10 XSI minimum values from <limits.h>
+
+
+
+2. Runtime invariant values, possibly indeterminate: IOV_MAX and PAGE_SIZE
+
+The minimum values are listed in Figure 2.10. The last two illustrate the situation in which the POSIX.1 minimums were too small-presumably to allow for embedded POSIX.1 implementations-so symbols with larger minimum values were added for XSI-conforming systems.
+
+
+
+
+
+2.5.4. sysconf, pathconf, and fpathconf Functions
+
+
+We've listed various minimum values that an implementation must support, but how do we find out the limits that a particular system actually supports? As we mentioned earlier, some of these limits might be available at compile time; others must be determined at runtime. We've also mentioned that some limits don't change in a given system, whereas others can change because they are associated with a file or directory. The runtime limits are obtained by calling one of the following three functions.
+
+
+
+Click here to view code image
+
+#include <unistd.h>
+
+
+
+long sysconf(int name);
+
+
+
+long pathconf(const char *pathname, int name);
+
+
+
+long fpathconf(int fd, int name);
+
+All three return: corresponding value if OK, -1 on error (see later)
+
+
+
+The difference between the last two functions is that one takes a pathname as its argument and the other takes a file descriptor argument.
+
+Figure 2.11 lists the name arguments that sysconf uses to identify system limits. Constants beginning with _SC_ are used as arguments to sysconf to identify the runtime limit. Figure 2.12 lists the name arguments that are used by pathconf and fpathconf to identify system limits. Constants beginning with _PC_ are used as arguments to pathconf and fpathconf to identify the runtime limit.
+
+
+
+
+
+Figure 2.11 Limits and name arguments to sysconf
+
+Figure 2.12 Limits and name arguments to pathconf and fpathconf
+
+
+
+We need to look in more detail at the different return values from these three functions.
+
+1. All three functions return -1 and set errno to EINVAL if the name isn't one of the appropriate constants. The third column in Figures 2.11 and 2.12 lists the limit constants we'll deal with throughout the rest of this book.
+
+2. Some names can return either the value of the variable (a return value >= 0) or an indication that the value is indeterminate. An indeterminate value is indicated by returning -1 and not changing the value of errno.
+
+3. The value returned for _SC_CLK_TCK is the number of clock ticks per second, for use with the return values from the times function (Section 8.17).
+
+Some restrictions apply to the pathconf pathname argument and the fpathconf fd argument. If any of these restrictions isn't met, the results are undefined.
+
+1. The referenced file for _PC_MAX_CANON and _PC_MAX_INPUT must be a terminal file.
+
+2. The referenced file for _PC_LINK_MAX and _PC_TIMESTAMP_RESOLUTION can be either a file or a directory. If the referenced file is a directory, the return value applies to the directory itself, not to the filename entries within the directory.
+
+3. The referenced file for _PC_FILESIZEBITS and _PC_NAME_MAX must be a directory. The return value applies to filenames within the directory.
+
+4. The referenced file for _PC_PATH_MAX must be a directory. The value returned is the maximum length of a relative pathname when the specified directory is the working directory. (Unfortunately, this isn't the real maximum length of an absolute pathname, which is what we want to know. We'll return to this problem in Section 2.5.5.)
+
+5. The referenced file for _PC_PIPE_BUF must be a pipe, FIFO, or directory. In the first two cases (pipe or FIFO), the return value is the limit for the referenced pipe or FIFO. For the other case (a directory), the return value is the limit for any FIFO created in that directory.
+
+6. The referenced file for _PC_SYMLINK_MAX must be a directory. The value returned is the maximum length of the string that a symbolic link in that directory can contain.
+
+Example
+
+The awk(1) program shown in Figure 2.13 builds a C program that prints the value of each pathconf and sysconf symbol.
+
+Click here to view code image
+
+
+
+* * *
+
+
+
+#!/usr/bin/awk -f
+
+BEGIN {
+
+printf("#include \"apue.h\"\n")
+
+printf("#include <errno.h>\n")
+
+printf("#include <limits.h>\n")
+
+printf("\n")
+
+printf("static void pr_sysconf(char *, int);\n")
+
+printf("static void pr_pathconf(char *, char *, int);\n")
+
+printf("\n")
+
+printf("int\n")
+
+printf("main(int argc, char *argv[])\n")
+
+printf("{\n")
+
+printf("\tif (argc != 2)\n")
+
+printf("\t\terr_quit(\"usage: a.out <dirname>\");\n\n")
+
+FS="\t+"
+
+while (getline <"sysconf.sym" > 0) {
+
+printf("#ifdef %s\n", $1)
+
+printf("\tprintf(\"%s defined to be %%ld\\n\", (long)%s+0);\n",
+
+$1, $1)
+
+printf("#else\n")
+
+printf("\tprintf(\"no symbol for %s\\n\");\n", $1)
+
+printf("#endif\n")
+
+printf("#ifdef %s\n", $2)
+
+printf("\tpr_sysconf(\"%s =\", %s);\n", $1, $2)
+
+printf("#else\n")
+
+printf("\tprintf(\"no symbol for %s\\n\");\n", $2)
+
+printf("#endif\n")
+
+}
+
+close("sysconf.sym")
+
+while (getline <"pathconf.sym" > 0) {
+
+printf("#ifdef %s\n", $1)
+
+printf("\tprintf(\"%s defined to be %%ld\\n\", (long)%s+0);\n",
+
+$1, $1)
+
+printf("#else\n")
+
+printf("\tprintf(\"no symbol for %s\\n\");\n", $1)
+
+printf("#endif\n")
+
+printf("#ifdef %s\n", $2)
+
+printf("\tpr_pathconf(\"%s =\", argv[1], %s);\n", $1, $2)
+
+printf("#else\n")
+
+printf("\tprintf(\"no symbol for %s\\n\");\n", $2)
+
+printf("#endif\n")
+
+}
+
+close("pathconf.sym")
+
+exit
+
+}
+
+END {
+
+printf("\texit(0);\n")
+
+printf("}\n\n")
+
+printf("static void\n")
+
+printf("pr_sysconf(char *mesg, int name)\n")
+
+printf("{\n")
+
+printf("\tlong val;\n\n")
+
+printf("\tfputs(mesg, stdout);\n")
+
+printf("\terrno = 0;\n")
+
+printf("\tif ((val = sysconf(name)) < 0) {\n")
+
+printf("\t\tif (errno != 0) {\n")
+
+printf("\t\t\tif (errno == EINVAL)\n")
+
+printf("\t\t\t\tfputs(\" (not supported)\\n\", stdout);\n")
+
+printf("\t\t\telse\n")
+
+printf("\t\t\t\terr_sys(\"sysconf error\");\n")
+
+printf("\t\t} else {\n")
+
+printf("\t\t\tfputs(\" (no limit)\\n\", stdout);\n")
+
+printf("\t\t}\n")
+
+printf("\t} else {\n")
+
+printf("\t\tprintf(\" %%ld\\n\", val);\n")
+
+printf("\t}\n")
+
+printf("}\n\n")
+
+printf("static void\n")
+
+printf("pr_pathconf(char *mesg, char *path, int name)\n")
+
+printf("{\n")
+
+printf("\tlong val;\n")
+
+printf("\n")
+
+printf("\tfputs(mesg, stdout);\n")
+
+printf("\terrno = 0;\n")
+
+printf("\tif ((val = pathconf(path, name)) < 0) {\n")
+
+printf("\t\tif (errno != 0) {\n")
+
+printf("\t\t\tif (errno == EINVAL)\n")
+
+printf("\t\t\t\tfputs(\" (not supported)\\n\", stdout);\n")
+
+printf("\t\t\telse\n")
+
+printf("\t\t\t\terr_sys(\"pathconf error, path = %%s\", path);\n")
+
+printf("\t\t} else {\n")
+
+printf("\t\t\tfputs(\" (no limit)\\n\", stdout);\n")
+
+printf("\t\t}\n")
+
+printf("\t} else {\n")
+
+printf("\t\tprintf(\" %%ld\\n\", val);\n")
+
+printf("\t}\n")
+
+printf("}\n")
+
+}
+
+
+
+* * *
+
+
+
+Figure 2.13 Build C program to print all supported configuration limits
+
+
+
+The awk program reads two input files-pathconf.sym and sysconf.sym-that contain lists of the limit name and symbol, separated by tabs. All symbols are not defined on every platform, so the awk program surrounds each call to pathconf and sysconf with the necessary #ifdef statements.
+
+For example, the awk program transforms a line in the input file that looks like
+
+NAME_MAX _PC_NAME_MAX
+
+into the following C code:
+
+Click here to view code image
+
+#ifdef NAME_MAX
+
+printf("NAME_MAX is defined to be %d\n", NAME_MAX+0);
+
+#else
+
+printf("no symbol for NAME_MAX\n");
+
+#endif
+
+#ifdef _PC_NAME_MAX
+
+pr_pathconf("NAME_MAX =", argv[1], _PC_NAME_MAX);
+
+#else
+
+printf("no symbol for _PC_NAME_MAX\n");
+
+#endif
+
+The program in Figure 2.14, generated by the awk program, prints all these limits, handling the case in which a limit is not defined.
+
+Click here to view code image
+
+
+
+* * *
+
+
+
+#include "apue.h"
+
+#include <errno.h>
+
+#include <limits.h>
+
+
+
+static void pr_sysconf(char *, int);
+
+static void pr_pathconf(char *, char *, int);
+
+
+
+int
+
+main(int argc, char *argv[])
+
+{
+
+if (argc != 2)
+
+err_quit("usage: a.out <dirname>");
+
+#ifdef ARG_MAX
+
+printf("ARG_MAX defined to be %ld\n", (long)ARG_MAX+0);
+
+#else
+
+printf("no symbol for ARG_MAX\n");
+
+#endif
+
+#ifdef _SC_ARG_MAX
+
+pr_sysconf("ARG_MAX =", _SC_ARG_MAX);
+
+#else
+
+printf("no symbol for _SC_ARG_MAX\n");
+
+#endif
+
+/* similar processing for all the rest of the sysconf symbols... */
+
+#ifdef MAX_CANON
+
+printf("MAX_CANON defined to be %ld\n", (long)MAX_CANON+0);
+
+#else
+
+printf("no symbol for MAX_CANON\n");
+
+#endif
+
+#ifdef _PC_MAX_CANON
+
+pr_pathconf("MAX_CANON =", argv[1], _PC_MAX_CANON);
+
+#else
+
+printf("no symbol for _PC_MAX_CANON\n");
+
+#endif
+
+/* similar processing for all the rest of the pathconf symbols... */
+
+exit(0);
+
+}
+
+static void
+
+pr_sysconf(char *mesg, int name)
+
+{
+
+long val;
+
+fputs(mesg, stdout);
+
+errno = 0;
+
+if ((val = sysconf(name)) < 0) {
+
+if (errno != 0) {
+
+if (errno == EINVAL)
+
+fputs(" (not supported)\n", stdout);
+
+else
+
+err_sys("sysconf error");
+
+} else {
+
+fputs(" (no limit)\n", stdout);
+
+}
+
+} else {
+
+printf(" %ld\n", val);
+
+}
+
+}
+
+static void
+
+pr_pathconf(char *mesg, char *path, int name)
+
+{
+
+long val;
+
+fputs(mesg, stdout);
+
+errno = 0;
+
+if ((val = pathconf(path, name)) < 0) {
+
+if (errno != 0) {
+
+if (errno == EINVAL)
+
+fputs(" (not supported)\n", stdout);
+
+else
+
+err_sys("pathconf error, path = %s", path);
+
+} else {
+
+fputs(" (no limit)\n", stdout);
+
+}
+
+} else {
+
+printf(" %ld\n", val);
+
+}
+
+}
+
+
+
+* * *
+
+
+
+Figure 2.14 Print all possible sysconf and pathconf values
+
+
+
+Figure 2.15 summarizes the results from Figure 2.14 for the four systems we discuss in this book. The entry "no symbol" means that the system doesn't provide a corresponding _SC or _PC symbol to query the value of the constant. Thus the limit is undefined in this case. In contrast, the entry "unsupported" means that the symbol is defined by the system but unrecognized by the sysconf or pathconf functions. The entry "no limit" means that the system defines no limit for the constant, but this doesn't mean that the limit is infinite; it just means that the limit is indeterminite.
+
+Beware that some limits are reported incorrectly. For example, on Linux, SYMLOOP_MAX is reportedly unlimited, but an examination of the source code reveals that there is actually a hard-coded limit of 40 for the number of consecutive symbolic links traversed in the absence of a loop (see the follow_link function in fs/namei.c).
+
+Another potential source of inaccuracy in Linux is that the pathconf and fpathconf functions are implemented in the C library. The configuration limits returned by these functions depend on the underlying file system type, so if your file system is unknown to the C library, the functions return an educated guess.
+
+Figure 2.15 Examples of configuration limits
+
+
+
+We'll see in Section 4.14 that UFS is the SVR4 implementation of the Berkeley fast file system. PCFS is the MS-DOS FAT file system implementation for Solaris.
+
+
+
+
+
+2.5.5. Indeterminate Runtime Limits
+
+
+We mentioned that some of the limits can be indeterminate. The problem we encounter is that if these limits aren't defined in the <limits.h> header, we can't use them at compile time. But they might not be defined at runtime if their value is indeterminate! Let's look at two specific cases: allocating storage for a pathname and determining the number of file descriptors.
+
+
+
+
+
+Pathnames
+
+
+Many programs need to allocate storage for a pathname. Typically, the storage has been allocated at compile time, and various magic numbers-few of which are the correct value-have been used by different programs as the array size: 256, 512, 1024, or the standard I/O constant BUFSIZ. The 4.3BSD constant MAXPATHLEN in the header <sys/param.h> is the correct value, but many 4.3BSD applications didn't use it.
+
+
+
+POSIX.1 tries to help with the PATH_MAX value, but if this value is indeterminate, we're still out of luck. Figure 2.16 shows a function that we'll use throughout this text to allocate storage dynamically for a pathname.
+
+Click here to view code image
+
+
+
+* * *
+
+
+
+#include "apue.h"
+
+#include <errno.h>
+
+#include <limits.h>
+
+
+
+#ifdef PATH_MAX
+
+static long pathmax = PATH_MAX;
+
+#else
+
+static long pathmax = 0;
+
+#endif
+
+
+
+static long posix_version = 0;
+
+static long xsi_version = 0;
+
+
+
+/* If PATH_MAX is indeterminate, no guarantee this is adequate */
+
+#define PATH_MAX_GUESS 1024
+
+
+
+char *
+
+path_alloc(size_t *sizep) /* also return allocated size, if nonnull */
+
+{
+
+char *ptr;
+
+size_t size;
+
+
+
+if (posix_version == 0)
+
+posix_version = sysconf(_SC_VERSION);
+
+
+
+if (xsi_version == 0)
+
+xsi_version = sysconf(_SC_XOPEN_VERSION);
+
+
+
+if (pathmax == 0) { /* first time through */
+
+errno = 0;
+
+if ((pathmax = pathconf("/", _PC_PATH_MAX)) < 0) {
+
+if (errno == 0)
+
+pathmax = PATH_MAX_GUESS; /* it's indeterminate */
+
+else
+
+err_sys("pathconf error for _PC_PATH_MAX");
+
+} else {
+
+pathmax++; /* add one since it's relative to root */
+
+}
+
+}
+
+/*
+
+* Before POSIX.1-2001, we aren't guaranteed that PATH_MAX includes
+
+* the terminating null byte. Same goes for XPG3.
+
+*/
+
+if ((posix_version < 200112L) && (xsi_version < 4))
+
+size = pathmax + 1;
+
+else
+
+size = pathmax;
+
+
+
+if ((ptr = malloc(size)) == NULL)
+
+err_sys("malloc error for pathname");
+
+
+
+if (sizep != NULL)
+
+*sizep = size;
+
+return(ptr);
+
+}
+
+
+
+* * *
+
+
+
+Figure 2.16 Dynamically allocate space for a pathname
+
+
+
+If the constant PATH_MAX is defined in <limits.h>, then we're all set. If it's not, then we need to call pathconf. The value returned by pathconf is the maximum size of a relative pathname when the first argument is the working directory, so we specify the root as the first argument and add 1 to the result. If pathconf indicates that PATH_MAX is indeterminate, we have to punt and just guess a value.
+
+Versions of POSIX.1 prior to 2001 were unclear as to whether PATH_MAX included a null byte at the end of the pathname. If the operating system implementation conforms to one of these prior versions and doesn't conform to any version of the Single UNIX Specification (which does require the terminating null byte to be included), we need to add 1 to the amount of memory we allocate for a pathname, just to be on the safe side.
+
+The correct way to handle the case of an indeterminate result depends on how the allocated space is being used. If we are allocating space for a call to getcwd, for example-to return the absolute pathname of the current working directory; see Section 4.23-and if the allocated space is too small, an error is returned and errno is set to ERANGE. We could then increase the allocated space by calling realloc (see Section 7.8 and Exercise 4.16) and try again. We could keep doing this until the call to getcwd succeeded.
+
+
+
+
+
+Maximum Number of Open Files
+
+
+A common sequence of code in a daemon process-a process that runs in the background, not connected to a terminal-is one that closes all open files. Some programs have the following code sequence, assuming the constant NOFILE was defined in the <sys/param.h> header:
+
+
+
+#include <sys/param.h>
+
+
+
+for (i = 0; i < NOFILE; i++)
+
+close(i);
+
+Other programs use the constant _NFILE that some versions of <stdio.h> provide as the upper limit. Some hard code the upper limit as 20. However, none of these approaches is portable.
+
+We would hope to use the POSIX.1 value OPEN_MAX to determine this value portably, but if the value is indeterminate, we still have a problem. If we wrote the following code and if OPEN_MAX was indeterminate, the loop would never execute, since sysconf would return -1:
+
+Click here to view code image
+
+#include <unistd.h>
+
+
+
+for (i = 0; i < sysconf(_SC_OPEN_MAX); i++)
+
+close(i);
+
+Our best option in this case is just to close all descriptors up to some arbitrary limit-say, 256. We show this technique in Figure 2.17. As with our pathname example, this strategy is not guaranteed to work for all cases, but it's the best we can do without using a more exotic approach.
+
+Click here to view code image
+
+
+
+* * *
+
+
+
+#include "apue.h"
+
+#include <errno.h>
+
+#include <limits.h>
+
+
+
+#ifdef OPEN_MAX
+
+static long openmax = OPEN_MAX;
+
+#else
+
+static long openmax = 0;
+
+#endif
+
+
+
+/*
+
+* If OPEN_MAX is indeterminate, this might be inadequate.
+
+*/
+
+#define OPEN_MAX_GUESS 256
+
+
+
+long
+
+open_max(void)
+
+{
+
+if (openmax == 0) { /* first time through */
+
+errno = 0;
+
+if ((openmax = sysconf(_SC_OPEN_MAX)) < 0) {
+
+if (errno == 0)
+
+openmax = OPEN_MAX_GUESS; /* it's indeterminate */
+
+else
+
+err_sys("sysconf error for _SC_OPEN_MAX");
+
+}
+
+}
+
+return(openmax);
+
+}
+
+
+
+* * *
+
+
+
+Figure 2.17 Determine the number of file descriptors
+
+
+
+We might be tempted to call close until we get an error return, but the error return from close (EBADF) doesn't distinguish between an invalid descriptor and a descriptor that wasn't open. If we tried this technique and descriptor 9 was not open but descriptor 10 was, we would stop on 9 and never close 10. The dup function (Section 3.12) does return a specific error when OPEN_MAX is exceeded, but duplicating a descriptor a couple of hundred times is an extreme way to determine this value.
+
+Some implementations will return LONG_MAX for limit values that are effectively unlimited. Such is the case with the Linux limit for ATEXIT_MAX (see Figure 2.15). This isn't a good idea, because it can cause programs to behave badly.
+
+For example, we can use the ulimit command built into the Bourne-again shell to change the maximum number of files our processes can have open at one time. This generally requires special (superuser) privileges if the limit is to be effectively unlimited. But once set to infinite, sysconf will report LONG_MAX as the limit for OPEN_MAX. A program that relies on this value as the upper bound of file descriptors to close, as shown in Figure 2.17, will waste a lot of time trying to close 2,147,483,647 file descriptors, most of which aren't even in use.
+
+Systems that support the XSI option in the Single UNIX Specification will provide the getrlimit(2) function (Section 7.11). It can be used to return the maximum number of descriptors that a process can have open. With it, we can detect that there is no configured upper bound to the number of open files our processes can open, so we can avoid this problem.
+
+The OPEN_MAX value is called runtime invariant by POSIX, meaning that its value should not change during the lifetime of a process. But on systems that support the XSI option, we can call the setrlimit(2) function (Section 7.11) to change this value for a running process. (This value can also be changed from the C shell with the limit command, and from the Bourne, Bourne-again, Debian Almquist, and Korn shells with the ulimit command.) If our system supports this functionality, we could change the function in Figure 2.17 to call sysconf every time it is called, not just the first time.
+
+
+
+
+
+2.6. Options
+
+
+We saw the list of POSIX.1 options in Figure 2.5 and discussed XSI option groups in Section 2.2.3. If we are to write portable applications that depend on any of these optionally supported features, we need a portable way to determine whether an implementation supports a given option.
+
+
+
+Just as with limits (Section 2.5), POSIX.1 defines three ways to do this.
+
+1. Compile-time options are defined in <unistd.h>.
+
+2. Runtime options that are not associated with a file or a directory are identified with the sysconf function.
+
+3. Runtime options that are associated with a file or a directory are discovered by calling either the pathconf or the fpathconf function.
+
+The options include the symbols listed in the third column of Figure 2.5, as well as the symbols listed in Figures 2.19 and 2.18. If the symbolic constant is not defined, we must use sysconf, pathconf, or fpathconf to determine whether the option is supported. In this case, the name argument to the function is formed by replacing the _POSIX at the beginning of the symbol with _SC or _PC. For constants that begin with _XOPEN, the name argument is formed by prepending the string with _SC or _PC. For example, if the constant _POSIX_RAW_SOCKETS is undefined, we can call sysconf with the name argument set to _SC_RAW_SOCKETS to determine whether the platform supports the raw sockets option. If the constant _XOPEN_UNIX is undefined, we can call sysconf with the name argument set to _SC_XOPEN_UNIX to determine whether the platform supports the XSI option interfaces.
+
+Figure 2.18 Options and name arguments to pathconf and fpathconf
+
+
+
+
+
+Figure 2.19 Options and name arguments to sysconf
+
+For each option, we have three possibilities for a platform's support status.
+
+1. If the symbolic constant is either undefined or defined to have the value -1, then the corresponding option is unsupported by the platform at compile time. It is possible to run an old application on a newer system where the option is supported, so a runtime check might indicate the option is supported even though the option wasn't supported at the time the application was compiled.
+
+2. If the symbolic constant is defined to be greater than zero, then the corresponding option is supported.
+
+3. If the symbolic constant is defined to be equal to zero, then we must call sysconf, pathconf, or fpathconf to determine whether the option is supported.
+
+The symbolic constants used with pathconf and fpathconf are summarized in Figure 2.18. Figure 2.19 summarizes the nonobsolete options and their symbolic constants that can be used with sysconf, in addition to those listed in Figure 2.5. Note that we omit options associated with utility commands.
+
+As with the system limits, there are several points to note regarding how options are treated by sysconf, pathconf, and fpathconf.
+
+1. The value returned for _SC_VERSION indicates the four-digit year and two-digit month of the standard. This value can be 198808L, 199009L, 199506L, or some other value for a later version of the standard. The value associated with Version 3 of the Single UNIX Specification is 200112L (the 2001 edition of POSIX.1). The value associated with Version 4 of the Single UNIX Specification (the 2008 edition of POSIX.1) is 200809L.
+
+2. The value returned for _SC_XOPEN_VERSION indicates the version of the XSI that the system supports. The value associated with Version 3 of the Single UNIX Specification is 600. The value associated with Version 4 of the Single UNIX Specification (the 2008 edition of POSIX.1) is 700.
+
+3. The values _SC_JOB_CONTROL, _SC_SAVED_IDS, and _PC_VDISABLE no longer represent optional features. Although XPG4 and prior versions of the Single UNIX Specification required that these features be supported, Version 3 of the Single UNIX Specification is the earliest version where these features are no longer optional in POSIX.1. These symbols are retained for backward compatibility.
+
+4. Platforms conforming to POSIX.1-2008 are also required to support the following options:
+
+? _POSIX_ASYNCHRONOUS_IO
+
+? _POSIX_BARRIERS
+
+? _POSIX_CLOCK_SELECTION
+
+? _POSIX_MAPPED_FILES
+
+? _POSIX_MEMORY_PROTECTION
+
+? _POSIX_READER_WRITER_LOCKS
+
+? _POSIX_REALTIME_SIGNALS
+
+? _POSIX_SEMAPHORES
+
+? _POSIX_SPIN_LOCKS
+
+? _POSIX_THREAD_SAFE_FUNCTIONS
+
+? _POSIX_THREADS
+
+? _POSIX_TIMEOUTS
+
+? _POSIX_TIMERS
+
+These constants are defined to have the value 200809L. Their corresponding _SC symbols are also retained for backward compatibility.
+
+5. _PC_CHOWN_RESTRICTED and _PC_NO_TRUNC return -1 without changing errno if the feature is not supported for the specified pathname or fd. On all POSIX-conforming systems, the return value will be greater than zero (indicating that the feature is supported).
+
+6. The referenced file for _PC_CHOWN_RESTRICTED must be either a file or a directory. If it is a directory, the return value indicates whether this option applies to files within that directory.
+
+7. The referenced file for _PC_NO_TRUNC and _PC_2_SYMLINKS must be a directory.
+
+8. For _PC_NO_TRUNC, the return value applies to filenames within the directory.
+
+9. The referenced file for _PC_VDISABLE must be a terminal file.
+
+10. For _PC_ASYNC_IO, _PC_PRIO_IO, and _PC_SYNC_IO, the referenced file must not be a directory.
+
+Figure 2.20 shows several configuration options and their corresponding values on the four sample systems we discuss in this text. An entry is "unsupported" if the system defines the symbolic constant but it has a value of -1, or if it has a value of 0 but the corresponding sysconf or pathconf call returned -1. It is interesting to see that some system implementations haven't yet caught up to the latest version of the Single UNIX Specification.
+
+Figure 2.20 Examples of configuration options
+
+
+
+Note that pathconf returns a value of -1 for _PC_NO_TRUNC when used with a file from a PCFS file system on Solaris. The PCFS file system supports the DOS format (for floppy disks), and DOS filenames are silently truncated to the 8.3 format limit that the DOS file system requires.
+
+
+
+
+
+2.7. Feature Test Macros
+
+
+The headers define numerous POSIX.1 and XSI symbols, as we've described. Even so, most implementations can add their own definitions to these headers, in addition to the POSIX.1 and XSI definitions. If we want to compile a program so that it depends only on the POSIX definitions and doesn't conflict with any implementation-defined constants, we need to define the constant _POSIX_C_SOURCE. All the POSIX.1 headers use this constant to exclude any implementation-defined definitions when _POSIX_C_SOURCE is defined.
+
+
+
+Older versions of the POSIX.1 standard defined the _POSIX_SOURCE constant. This was superseded by the _POSIX_C_SOURCE constant in the 2001 version of POSIX.1.
+
+The constants _POSIX_C_SOURCE and _XOPEN_SOURCE are called feature test macros. All feature test macros begin with an underscore. When used, they are typically defined in the cc command, as in
+
+cc -D_POSIX_C_SOURCE=200809L file.c
+
+This causes the feature test macro to be defined before any header files are included by the C program. If we want to use only the POSIX.1 definitions, we can also set the first line of a source file to
+
+#define _POSIX_C_SOURCE 200809L
+
+To enable the XSI option of Version 4 of the Single UNIX Specification, we need to define the constant _XOPEN_SOURCE to be 700. Besides enabling the XSI option, this has the same effect as defining _POSIX_C_SOURCE to be 200809L as far as POSIX.1 functionality is concerned.
+
+The Single UNIX Specification defines the c99 utility as the interface to the C compilation environment. With it we can compile a file as follows:
+
+c99 -D_XOPEN_SOURCE=700 file.c -o file
+
+To enable the 1999 ISO C extensions in the gcc C compiler, we use the -std=c99 option, as in
+
+gcc -D_XOPEN_SOURCE=700 -std=c99 file.c -o file
+
+
+
+
+
+2.8. Primitive System Data Types
+
+
+Historically, certain C data types have been associated with certain UNIX system variables. For example, major and minor device numbers have historically been stored in a 16-bit short integer, with 8 bits for the major device number and 8 bits for the minor device number. But many larger systems need more than 256 values for these device numbers, so a different technique is needed. (Indeed, the 32-bit version of Solaris uses 32 bits for the device number: 14 bits for the major and 18 bits for the minor.)
+
+
+
+The header <sys/types.h> defines some implementation-dependent data types, called the primitive system data types. More of these data types are defined in other headers as well. These data types are defined in the headers with the C typedef facility. Most end in _t. Figure 2.21 lists many of the primitive system data types that we'll encounter in this text.
+
+Figure 2.21 Some common primitive system data types
+
+
+
+By defining these data types this way, we do not build into our programs implementation details that can change from one system to another. We describe what each of these data types is used for when we encounter them later in the text.
+
+
+
+
+
+2.9. Differences Between Standards
+
+
+All in all, these various standards fit together nicely. Our main concern is any differences between the ISO C standard and POSIX.1, since the Base Specifications of the Single UNIX Specification and POSIX.1 are one and the same. Conflicts are unintended, but if they should arise, POSIX.1 defers to the ISO C standard. However, there are some differences.
+
+
+
+ISO C defines the function clock to return the amount of CPU time used by a process. The value returned is a clock_t value, but ISO C doesn't specify its units. To convert this value to seconds, we divide it by CLOCKS_PER_SEC, which is defined in the <time.h> header. POSIX.1 defines the function times that returns both the CPU time (for the caller and all its terminated children) and the clock time. All these time values are clock_t values. The sysconf function is used to obtain the number of clock ticks per second for use with the return values from the times function. What we have is the same data type (clock_t) used to hold measurements of time defined with different units by ISO C and POSIX.1. The difference can be seen in Solaris, where clock returns microseconds (hence CLOCKS_PER_SEC is 1 million), whereas sysconf returns the value 100 for clock ticks per second. Thus we must take care when using variables of type clock_t so that we don't mix variables with different units.
+
+Another area of potential conflict is when the ISO C standard specifies a function, but doesn't specify it as strongly as POSIX.1 does. This is the case for functions that require a different implementation in a POSIX environment (with multiple processes) than in an ISO C environment (where very little can be assumed about the host operating system). Nevertheless, POSIX-compliant systems implement the ISO C function for compatibility. The signal function is an example. If we unknowingly use the signal function provided by Solaris (hoping to write portable code that can be run in ISO C environments and under older UNIX systems), it will provide semantics different from the POSIX.1 sigaction function. We'll have more to say about the signal function in Chapter 10.
+
+
+
+
+
+2.10. Summary
+
+
+Much has happened with the standardization of the UNIX programming environment over the past two and a half decades. We've described the dominant standards-ISO C, POSIX, and the Single UNIX Specification-and their effect on the four platforms that we'll examine in this text-FreeBSD, Linux, Mac OS X, and Solaris. These standards try to define certain parameters that can change with each implementation, but we've seen that these limits are imperfect. We'll encounter many of these limits and magic constants as we proceed through the text.
+
+
+
+The bibliography specifies how to obtain copies of the standards discussed in this chapter.
+
+
+
+
+
+Exercises
+
+
+2.1 We mentioned in Section 2.8 that some of the primitive system data types are defined in more than one header. For example, in FreeBSD 8.0, size_t is defined in 29 different headers. Because all 29 headers could be included in a program and because ISO C does not allow multiple typedefs for the same name, how must the headers be written?
+
